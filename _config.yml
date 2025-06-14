@@ -11,7 +11,7 @@
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
 # theme                      : "minimal-mistakes-jekyll"
-remote_theme             : "mmistakes/minimal-mistakes@4.15.1"
+remote_theme             : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "jamoski" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
@@ -22,7 +22,7 @@ name                     : "Rahul R"
 description              : "Personal blog where I will be posting about security,CTFs and more"
 url                      : "https://rahulr.in" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : "rahulr311295/jamoski.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "jamoski3112/jamoski.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 logo                     : "/assets/images/masthead.png"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 breadcrumbs              : true # true, false (default)
@@ -114,7 +114,7 @@ author:
   flickr           :
   facebook         : "rahul.raveendran.92351"
   foursquare       :
-  github           : "rahulr311295"
+  github           : "jamoski3112"
   gitlab           :
   google_plus      :
   keybase          : 
