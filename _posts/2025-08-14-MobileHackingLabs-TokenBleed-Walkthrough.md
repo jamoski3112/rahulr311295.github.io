@@ -1,7 +1,7 @@
 ---
 layout: single
-title: "Mobile Hacking Labs - TokenBleed Challenge Walkthrough"
-excerpt: "Exploiting DSBridge vulnerability in Android WebView to achieve remote JWT token theft"
+title: "MobileHackingLabs - TokenBleed Challenge Walkthrough"
+excerpt: "Technical Walkthrough on solving the TokenBleed challenge from MobileHackingLabs"
 date: 2025-08-14
 classes: wide
 header:
