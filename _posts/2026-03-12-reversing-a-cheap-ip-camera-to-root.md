@@ -15,7 +15,7 @@ tags:
   - hardware hacking
 ---
 
-> > An LLM was used in assisting with writing this post.
+> An LLM was used in assisting with writing this post.
 
 As my yearly procrastination activity, I decided to finally dive into hardware hacking. I stocked up on the essentials: a soldering iron, a heatgun, a multimeter, some jumper wires, a **Bus Pirate** (which I bought for no apparent reason, as I could have just used my Flipper Zero for UART), and a **CH341** chip programmer. For my "victim," I chose a **Jooan C9TS IP camera** that I snagged from Temu for dirt cheap.
 
