@@ -1,0 +1,48 @@
+/* ==========================================================================
+   TERMINAL-STYLE CODE BLOCKS
+   Only applies to fenced blocks tagged as terminal/console output, e.g.:
+
+     ```console
+     $ nmap -sV 10.10.10.10
+     ...
+     ```
+
+   Regular source-code blocks (bash, python, java, xml, etc.) are untouched.
+   ========================================================================== */
+
+$terminal-bar-height: 2.25em;
+$terminal-dot-size: 11px;
+$terminal-dot-gap: 18px;
+
+div.language-console.highlighter-rouge,
+div.language-terminal.highlighter-rouge,
+div.language-shell-session.highlighter-rouge {
+  position: relative;
+  padding-top: $terminal-bar-height;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $terminal-bar-height;
+    background: mix(#fff, $background-color, 10%);
+    border-bottom: 1px solid $border-color;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: calc((#{$terminal-bar-height} - #{$terminal-dot-size}) / 2);
+    left: 1em;
+    width: $terminal-dot-size;
+    height: $terminal-dot-size;
+    border-radius: 50%;
+    background: #ff5f56;
+    box-shadow:
+      $terminal-dot-gap 0 0 #ffbd2e,
+      ($terminal-dot-gap * 2) 0 0 #27c93f;
+  }
+}

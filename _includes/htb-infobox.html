@@ -1,0 +1,39 @@
+{% if page.htb %}
+{% assign htb_os = page.htb.os | default: "" | downcase %}
+{% if htb_os contains "linux" %}
+  {% assign htb_os_icon = "/assets/images/icons/os-linux.webp" %}
+{% elsif htb_os contains "windows" %}
+  {% assign htb_os_icon = "/assets/images/icons/os-windows.webp" %}
+{% elsif htb_os contains "freebsd" %}
+  {% assign htb_os_icon = "/assets/images/icons/os-freebsd.webp" %}
+{% elsif htb_os contains "openbsd" %}
+  {% assign htb_os_icon = "/assets/images/icons/os-openbsd.webp" %}
+{% elsif htb_os contains "solaris" %}
+  {% assign htb_os_icon = "/assets/images/icons/os-solaris.webp" %}
+{% else %}
+  {% assign htb_os_icon = "" %}
+{% endif %}
+<div class="htb-infobox">
+  <div class="htb-infobox__icon">
+    <img src="{{ page.htb.icon | default: '/assets/images/hackthebox.webp' }}" alt="{{ page.htb.machine }} icon" loading="lazy" />
+  </div>
+  <div class="htb-infobox__body">
+    <div class="htb-infobox__header">
+      {% if htb_os_icon != "" %}
+        <img class="htb-infobox__os-icon" src="{{ htb_os_icon }}" alt="{{ page.htb.os }}" title="{{ page.htb.os }}" loading="lazy" />
+      {% endif %}
+      <strong class="htb-infobox__name">{{ page.htb.machine }}</strong>
+      {% if page.htb.difficulty %}
+        <span class="htb-difficulty htb-difficulty--{{ page.htb.difficulty | downcase }}">{{ page.htb.difficulty }}</span>
+      {% endif %}
+    </div>
+    <ul class="htb-infobox__meta">
+      {% if page.htb.os %}<li><i class="fas fa-fw fa-desktop" aria-hidden="true"></i>{{ page.htb.os }}</li>{% endif %}
+      {% if page.htb.points %}<li><i class="fas fa-fw fa-star" aria-hidden="true"></i>{{ page.htb.points }} points</li>{% endif %}
+      {% if page.htb.ip %}<li><i class="fas fa-fw fa-network-wired" aria-hidden="true"></i>{{ page.htb.ip }}</li>{% endif %}
+      {% if page.htb.retired %}<li><i class="fas fa-fw fa-calendar-check" aria-hidden="true"></i>Retired {{ page.htb.retired | date: "%B %-d, %Y" }}</li>{% endif %}
+      {% if page.htb.profile %}<li><i class="fas fa-fw fa-link" aria-hidden="true"></i><a href="{{ page.htb.profile }}" target="_blank" rel="noopener noreferrer">Machine Profile</a></li>{% endif %}
+    </ul>
+  </div>
+</div>
+{% endif %}

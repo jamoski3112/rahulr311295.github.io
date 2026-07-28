@@ -6,3 +6,5 @@
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+@import "htb-infobox"; // custom HackTheBox writeup info box
+@import "terminal-code"; // terminal-window styling for fenced code blocks
