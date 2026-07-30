@@ -25,6 +25,6 @@ htb:
 ---
 {% raw %}
 <div class="notice--info" markdown="0">
-  <strong>This has not retired yet on HackTheBox.</strong>
+  <strong>This is an active box on HackTheBox.</strong> Writeup will be published once the box is retired.
 </div>
 {% endraw %}
