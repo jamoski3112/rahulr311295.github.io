@@ -1,0 +1,32 @@
+backend:
+  name: github
+  repo: jamoski3112/rahulr311295.github.io
+  branch: gh-pages
+  base_url: https://REPLACE-WITH-YOUR-VERCEL-APP.vercel.app
+  auth_endpoint: api/auth
+
+publish_mode: simple
+media_folder: "assets/images/{{slug}}"
+public_folder: "/assets/images/{{slug}}"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: "layout", label: "Layout", widget: "hidden", default: "single" }
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "excerpt", label: "Excerpt", widget: "text" }
+      - { name: "date", label: "Date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { name: "classes", label: "Classes", widget: "hidden", default: "wide" }
+      - name: "header"
+        label: "Header image"
+        widget: "object"
+        fields:
+          - { name: "teaser", label: "Teaser image", widget: "image", required: false }
+          - { name: "teaser_home_page", label: "Show teaser on homepage", widget: "boolean", default: true }
+      - { name: "categories", label: "Categories", widget: "list", required: false, hint: "e.g. reverse engineering, capture the flag" }
+      - { name: "tags", label: "Tags", widget: "list", required: false }
+      - { name: "body", label: "Body", widget: "markdown" }
