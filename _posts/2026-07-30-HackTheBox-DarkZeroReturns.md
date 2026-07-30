@@ -1,6 +1,6 @@
 ---
 layout: htb-writeup
-title: "DarkZero Returns — Full Chain"
+title: "HackTheBox - DarkZeroReturns"
 excerpt: "Writeup pending - this machine hasn't retired on HackTheBox yet."
 date: 2026-07-30
 classes: wide
