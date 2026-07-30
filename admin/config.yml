@@ -2,7 +2,7 @@ backend:
   name: github
   repo: jamoski3112/rahulr311295.github.io
   branch: gh-pages
-  base_url: https://REPLACE-WITH-YOUR-VERCEL-APP.vercel.app
+  base_url: https://decap-cms-oauth-emua1e95j-rahuls-projects-d89b8bae.vercel.app
   auth_endpoint: api/auth
 
 publish_mode: simple
