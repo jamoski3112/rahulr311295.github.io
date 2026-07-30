@@ -12,13 +12,15 @@ categories:
   - hackthebox
 tags:
   - hackthebox
+  - windows
+  - hard
 htb:
   machine: "DarkZeroReturns"
   os: "Windows"
-  difficulty: "Insane"
-  points:
+  difficulty: "Hard"
+  points: 40
   retired:
-  profile:
+  profile: https://app.hackthebox.com/machines/DarkZeroReturns
   icon: /assets/images/htb-darkzeroreturns/icon.png
 ---
 {% raw %}
