@@ -25,6 +25,6 @@ htb:
 ---
 {% raw %}
 <div class="notice--info" markdown="0">
-  <strong>This has not retired yet on HackTheBox.</strong> We only publish writeups for retired machines and challenges. Once it retires, this writeup will become publicly accessible.
+  <strong>This has not retired yet on HackTheBox.</strong>
 </div>
 {% endraw %}
