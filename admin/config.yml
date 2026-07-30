@@ -30,3 +30,44 @@ collections:
       - { name: "categories", label: "Categories", widget: "list", required: false, hint: "e.g. reverse engineering, capture the flag" }
       - { name: "tags", label: "Tags", widget: "list", required: false }
       - { name: "body", label: "Body", widget: "markdown" }
+
+  - name: "htb_writeups"
+    label: "HackTheBox Writeups"
+    description: "For already-RETIRED machines only. Active-machine drafts belong in the private htb-writeup-drafts repo, not here."
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: "layout", label: "Layout", widget: "hidden", default: "single" }
+      - { name: "title", label: "Title", widget: "string", hint: "e.g. HackTheBox - MachineName" }
+      - { name: "excerpt", label: "Excerpt", widget: "text" }
+      - { name: "date", label: "Date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { name: "classes", label: "Classes", widget: "hidden", default: "wide" }
+      - name: "header"
+        label: "Header image"
+        widget: "object"
+        fields:
+          - { name: "teaser", label: "Teaser image", widget: "image", required: false }
+          - { name: "icon", label: "Nav/teaser icon", widget: "hidden", default: "/assets/images/hackthebox.webp" }
+          - { name: "teaser_home_page", label: "Show teaser on homepage", widget: "boolean", default: true }
+      - { name: "categories", label: "Categories", widget: "hidden", default: ["hackthebox"] }
+      - { name: "tags", label: "Tags", widget: "list", default: ["hackthebox"] }
+      - name: "htb"
+        label: "Machine Info"
+        widget: "object"
+        fields:
+          - { name: "machine", label: "Machine Name", widget: "string" }
+          - name: "os"
+            label: "OS"
+            widget: "select"
+            options: ["Linux", "Windows", "FreeBSD", "OpenBSD", "Solaris", "Other"]
+          - name: "difficulty"
+            label: "Difficulty"
+            widget: "select"
+            options: ["Easy", "Medium", "Hard", "Insane"]
+          - { name: "points", label: "Points", widget: "number", value_type: "int", required: false }
+          - { name: "ip", label: "IP Address", widget: "string", required: false }
+          - { name: "retired", label: "Retired Date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: true, hint: "Required - this collection is for retired machines only" }
+          - { name: "profile", label: "HTB Profile URL", widget: "string", required: false }
+          - { name: "icon", label: "Machine icon (optional, overrides the default HTB logo in the info box)", widget: "image", required: false }
+      - { name: "body", label: "Body", widget: "markdown", default: "{% include htb-infobox.html %}\n\n" }
