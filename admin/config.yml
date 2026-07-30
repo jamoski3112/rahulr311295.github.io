@@ -38,7 +38,7 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { name: "layout", label: "Layout", widget: "hidden", default: "single" }
+      - { name: "layout", label: "Layout", widget: "hidden", default: "htb-writeup" }
       - { name: "title", label: "Title", widget: "string", hint: "e.g. HackTheBox - MachineName" }
       - { name: "excerpt", label: "Excerpt", widget: "text" }
       - { name: "date", label: "Date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
@@ -70,4 +70,4 @@ collections:
           - { name: "retired", label: "Retired Date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: true, hint: "Required - this collection is for retired machines only" }
           - { name: "profile", label: "HTB Profile URL", widget: "string", required: false }
           - { name: "icon", label: "Machine icon (optional, overrides the default HTB logo in the info box)", widget: "image", required: false }
-      - { name: "body", label: "Body", widget: "markdown", default: "{% include htb-infobox.html %}\n\n" }
+      - { name: "body", label: "Body", widget: "markdown", default: "{% raw %}\n\n\n{% endraw %}", hint: "The Machine Info box renders automatically above this - no include needed. Keep everything you write between the {% raw %} / {% endraw %} markers already in this field - that's what lets {{ }} / {% %} template-injection syntax (Handlebars, Jinja, etc.) appear as-is without escaping." }
