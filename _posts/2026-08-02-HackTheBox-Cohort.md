@@ -5,7 +5,7 @@ excerpt: "Writeup pending - this machine hasn't retired on HackTheBox yet."
 date: 2026-08-02
 classes: wide
 header:
-  teaser: /assets/images/hackthebox.webp
+  teaser: /assets/images/htb-cohort/icon.png
   icon: /assets/images/hackthebox.webp
   teaser_home_page: true
 categories:
@@ -19,7 +19,7 @@ htb:
   points:
   retired:
   profile:
-  icon: /assets/images/hackthebox.webp
+  icon: /assets/images/htb-cohort/icon.png
 ---
 {% raw %}
 <div class="notice--info" markdown="0">
