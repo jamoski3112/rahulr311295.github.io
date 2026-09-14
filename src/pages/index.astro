@@ -3,7 +3,6 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import PostCard from '../components/PostCard.astro';
 import Icon from '../components/Icon.astro';
-import HtbProfile from '../components/HtbProfile.astro';
 import { getPosts, getCategories, getTags } from '../lib/posts';
 import { SITE } from '../consts';
 
@@ -17,14 +16,6 @@ const latest = SITE.postsPerHome > 0 ? rest.slice(0, SITE.postsPerHome - 1) : re
 <Base>
   <div class="container">
     <Hero stats={stats} />
-
-    <section class="htb-section">
-      <div class="section-title">
-        <h2><span class="prompt">$</span>hackthebox status</h2>
-        <a class="more" href="/about/#hackthebox">full stats →</a>
-      </div>
-      <HtbProfile variant="compact" />
-    </section>
 
     <section>
       <div class="section-title">
@@ -54,9 +45,6 @@ const latest = SITE.postsPerHome > 0 ? rest.slice(0, SITE.postsPerHome - 1) : re
 </Base>
 
 <style>
-  .htb-section {
-    margin-bottom: 3rem;
-  }
   .cats {
     margin-top: 3rem;
   }

@@ -1,6 +1,7 @@
 ---
 import { SITE, SOCIAL } from '../consts';
 import Icon from './Icon.astro';
+import htb from '../data/htb.json';
 interface Props { stats: { posts: number; categories: number; tags: number; htb: number } }
 const { stats } = Astro.props;
 ---
@@ -33,6 +34,8 @@ const { stats } = Astro.props;
 <span class="p">rahul@rahulr.in</span>:<span class="d">~</span>$ <span class="c">ls</span> -la blog/
 <span class="o">{String(stats.posts).padStart(3)}  posts        {String(stats.htb).padStart(3)}  htb-writeups</span>
 <span class="o">{String(stats.categories).padStart(3)}  categories   {String(stats.tags).padStart(3)}  tags</span>
+<span class="p">rahul@rahulr.in</span>:<span class="d">~</span>$ <span class="c">htb</span> --status
+<span class="o"><a href="/about/#hackthebox">{htb.rank}</a> · #{htb.ranking} global · {htb.points} pts · {htb.userOwns}/{htb.systemOwns} owns</span>
 <span class="p">rahul@rahulr.in</span>:<span class="d">~</span>$ <span class="cursor">▍</span></code></pre>
   </div>
 </section>
@@ -127,6 +130,8 @@ const { stats } = Astro.props;
   .terminal__body .d { color: #79c0ff; }
   .terminal__body .c { color: var(--accent); }
   .terminal__body .o { color: var(--muted); }
+  .terminal__body .o a { color: #9fef00; }
+  .terminal__body .o a:hover { text-decoration: underline; }
   .cursor {
     color: var(--accent);
     animation: blink 1s steps(2, start) infinite;

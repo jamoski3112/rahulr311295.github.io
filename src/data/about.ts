@@ -65,15 +65,6 @@ export const about = {
     },
   ],
   labs: [
-    { name: 'Zephyr', issuer: 'Hack The Box', date: 'May 2026', tag: 'Active Directory' },
-    { name: 'Fullhouse', issuer: 'Hack The Box', date: 'May 2026' },
-    { name: 'Offshore', issuer: 'Hack The Box', date: 'Apr 2026', tag: 'Active Directory' },
-    { name: 'Rastalabs', issuer: 'Hack The Box', date: 'Mar 2026', tag: 'Active Directory' },
-    { name: 'Ifrit', issuer: 'Hack The Box', date: 'Mar 2026', tag: 'Active Directory' },
-    { name: 'BlackSky: HailStorm', issuer: 'Hack The Box', date: 'Feb 2026', tag: 'AWS' },
-    { name: 'BlackSky: Blizzard', issuer: 'Hack The Box', date: 'Feb 2026', tag: 'GCP' },
-    { name: 'BlackSky: Cyclone', issuer: 'Hack The Box', date: 'Jan 2026', tag: 'Azure' },
-    { name: 'Dante', issuer: 'Hack The Box', date: 'Nov 2025' },
     { name: 'Config Editor (RCE)', issuer: 'Mobile Hacking Lab', date: 'Jun 2025', tag: 'Android' },
   ],
 };
