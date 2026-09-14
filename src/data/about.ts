@@ -64,7 +64,4 @@ export const about = {
       location: 'Thiruvananthapuram, India',
     },
   ],
-  labs: [
-    { name: 'Config Editor (RCE)', issuer: 'Mobile Hacking Lab', date: 'Jun 2025', tag: 'Android' },
-  ],
 };

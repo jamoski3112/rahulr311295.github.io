@@ -52,18 +52,6 @@ import HtbProfile from '../components/HtbProfile.astro';
           <HtbProfile variant="full" />
         </section>
 
-        <section>
-          <h2 class="h"><span class="prompt">$</span>ls certs/</h2>
-          <ul class="labs">
-            {about.labs.map((l) => (
-              <li>
-                <span class="labs__name">{l.name}</span>
-                <span class="labs__meta mono">{l.issuer} · {l.date}</span>
-                {l.tag && <span class="pill">{l.tag}</span>}
-              </li>
-            ))}
-          </ul>
-        </section>
       </div>
 
       <aside class="side">
@@ -227,32 +215,6 @@ import HtbProfile from '../components/HtbProfile.astro';
     margin: 0;
     color: var(--muted);
     font-size: 0.92rem;
-  }
-  .labs {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 0.4rem;
-  }
-  .labs li {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.4rem 0.8rem;
-    padding: 0.6rem 0.9rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-  }
-  .labs__name {
-    color: var(--text-strong);
-    font-weight: 600;
-  }
-  .labs__meta {
-    font-size: 0.74rem;
-    color: var(--muted);
-    margin-right: auto;
   }
   .box {
     background: var(--surface);
