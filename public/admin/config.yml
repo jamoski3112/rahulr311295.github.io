@@ -13,6 +13,39 @@ media_folder: "public/assets/images/{{slug}}"
 public_folder: "/assets/images/{{slug}}"
 
 collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "about"
+        label: "About"
+        file: "src/content/about.md"
+        fields:
+          - { name: "name", label: "Name", widget: "string" }
+          - { name: "headline", label: "Headline", widget: "string" }
+          - { name: "certs", label: "Certifications", widget: "list", required: false }
+          - { name: "location", label: "Location", widget: "string", required: false }
+          - { name: "avatar", label: "Avatar", widget: "image", required: false }
+          - name: "links"
+            label: "Links"
+            widget: "object"
+            required: false
+            fields:
+              - { name: "linkedin", label: "LinkedIn", widget: "string", required: false }
+              - { name: "github", label: "GitHub", widget: "string", required: false }
+              - { name: "twitter", label: "X / Twitter", widget: "string", required: false }
+          - { name: "focus", label: "Focus areas", widget: "list", required: false }
+          - name: "experience"
+            label: "Experience"
+            widget: "list"
+            required: false
+            fields:
+              - { name: "role", label: "Role", widget: "string" }
+              - { name: "company", label: "Company", widget: "string" }
+              - { name: "period", label: "Period", widget: "string" }
+              - { name: "location", label: "Location", widget: "string", required: false }
+              - { name: "notes", label: "Notes", widget: "text", required: false }
+          - { name: "body", label: "Bio", widget: "markdown" }
+
   - name: "posts"
     label: "Posts"
     folder: "src/content/posts"

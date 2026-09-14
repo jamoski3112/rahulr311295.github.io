@@ -35,4 +35,20 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+const about = defineCollection({
+  loader: glob({ pattern: 'about.md', base: './src/content', generateId: () => 'about' }),
+  schema: z.object({
+    name: z.string(),
+    headline: z.string(),
+    certs: z.array(z.string()).default([]),
+    location: z.string().optional(),
+    avatar: z.string().optional(),
+    links: z.object({ linkedin: z.string().optional(), github: z.string().optional(), twitter: z.string().optional() }).default({}),
+    focus: z.array(z.string()).default([]),
+    experience: z
+      .array(z.object({ role: z.string(), company: z.string(), period: z.string(), location: z.string().optional(), notes: z.string().optional() }))
+      .default([]),
+  }),
+});
+
+export const collections = { posts, about };

@@ -1,0 +1,56 @@
+---
+name: Rahul R
+headline: Security Engineer · Penetration Tester
+certs:
+  - OSCP
+  - CRTP
+  - eJPT
+  - CEH
+location: Dubai, United Arab Emirates
+avatar: /assets/images/avatar.png
+links:
+  linkedin: https://www.linkedin.com/in/rahul-r-3b0433a6/
+  github: https://github.com/jamoski3112
+  twitter: https://x.com/Rahul_R95
+focus:
+  - Web & API penetration testing
+  - Active Directory attacks & lateral movement
+  - Cloud security (AWS, Azure, GCP)
+  - Android reverse engineering & malware analysis
+  - Hardware hacking & firmware extraction
+  - Adversary simulation & purple teaming
+  - SIEM & detection (LogRhythm, Splunk)
+  - Game hacking & memory manipulation
+experience:
+  - role: Cyber Security Specialist
+    company: Digital Dubai
+    period: May 2023 – Present
+    location: Dubai, UAE
+    notes: Offensive security for Dubai government digital services.
+  - role: Offensive Security Lead
+    company: ActivBytes
+    period: Jul 2022 – Apr 2023
+    location: Trivandrum, India
+    notes: Led the offensive security team; penetration testing, strategy and mentoring.
+  - role: Purple Team Consultant
+    company: Abu Dhabi Securities Exchange
+    period: Jan 2020 – Apr 2023
+    location: Abu Dhabi, UAE
+    notes: Adversary simulation, vulnerability management and SIEM tuning.
+  - role: Senior Security Consultant
+    company: ActivBytes
+    period: Mar 2019 – Nov 2022
+    location: Trivandrum, India
+    notes: Vulnerability assessment and penetration testing.
+  - role: Security Analyst
+    company: NetObjex
+    period: Jan 2018 – Feb 2019
+    location: India
+  - role: Intern
+    company: UST Global
+    period: Dec 2017 – Feb 2018
+    location: Thiruvananthapuram, India
+---
+I work on the offensive side of security: penetration testing, red and purple team engagements, and vulnerability management. Currently a Cyber Security Specialist at Digital Dubai, before that leading offensive security at ActivBytes and consulting for the Abu Dhabi Securities Exchange.
+
+Outside work I spend most of my time on HackTheBox, CTFs, reverse engineering Android apps and malware, and pulling apart cheap hardware. This blog is where the notes from all of that end up.

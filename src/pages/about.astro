@@ -1,13 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import { about } from '../data/about';
+import { getEntry, render } from 'astro:content';
 import HtbProfile from '../components/HtbProfile.astro';
+import '../styles/prose.css';
+const entry = await getEntry('about', 'about');
+if (!entry) throw new Error('src/content/about.md is missing');
+const about = entry.data;
+const { Content } = await render(entry);
+const bio = (entry.body ?? '').split(/\n\s*\n/)[0].replace(/\s+/g, ' ');
 ---
-<Base title="About" description={`${about.name} — ${about.headline}. ${about.summary[0]}`}>
+<Base title="About" description={`${about.name} — ${about.headline}. ${bio}`}>
   <div class="container about">
     <header class="me">
-      <img class="me__avatar" src={about.avatar} alt={about.name} width="120" height="120" />
+      <img class="me__avatar" src={about.avatar ?? '/assets/images/avatar.png'} alt={about.name} width="120" height="120" />
       <div>
         <p class="eyebrow">about</p>
         <h1>{about.name}</h1>
@@ -15,11 +21,11 @@ import HtbProfile from '../components/HtbProfile.astro';
         <ul class="me__certs">
           {about.certs.map((c) => <li class="pill">{c}</li>)}
         </ul>
-        <p class="me__loc"><Icon name="pin" size={14} />{about.location}</p>
+        {about.location && <p class="me__loc"><Icon name="pin" size={14} />{about.location}</p>}
         <ul class="me__links">
-          <li><a href={about.linkedin} target="_blank" rel="noopener noreferrer"><Icon name="linkedin" size={15} />LinkedIn</a></li>
-          <li><a href={about.github} target="_blank" rel="noopener noreferrer"><Icon name="github" size={15} />GitHub</a></li>
-          <li><a href={about.twitter} target="_blank" rel="noopener noreferrer"><Icon name="x" size={15} />X</a></li>
+          {about.links.linkedin && <li><a href={about.links.linkedin} target="_blank" rel="noopener noreferrer"><Icon name="linkedin" size={15} />LinkedIn</a></li>}
+          {about.links.github && <li><a href={about.links.github} target="_blank" rel="noopener noreferrer"><Icon name="github" size={15} />GitHub</a></li>}
+          {about.links.twitter && <li><a href={about.links.twitter} target="_blank" rel="noopener noreferrer"><Icon name="x" size={15} />X</a></li>}
         </ul>
       </div>
     </header>
@@ -28,7 +34,7 @@ import HtbProfile from '../components/HtbProfile.astro';
       <div class="main">
         <section>
           <h2 class="h"><span class="prompt">$</span>cat about.txt</h2>
-          {about.summary.map((p) => <p class="para">{p}</p>)}
+          <div class="prose bio"><Content /></div>
         </section>
 
         <section>
@@ -166,9 +172,9 @@ import HtbProfile from '../components/HtbProfile.astro';
     content: '// ';
     color: var(--muted);
   }
-  .para {
-    margin: 0 0 1rem;
+  .bio {
     max-width: 68ch;
+    font-size: 1rem;
   }
   .timeline {
     list-style: none;
