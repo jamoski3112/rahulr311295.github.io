@@ -10,7 +10,7 @@ export const about = {
   twitter: 'https://x.com/Rahul_R95',
   summary: [
     'I work on the offensive side of security: penetration testing, red and purple team engagements, and vulnerability management. Currently a Cyber Security Specialist at Digital Dubai, before that leading offensive security at ActivBytes and consulting for the Abu Dhabi Securities Exchange.',
-    'Outside work I spend most of my time on HackTheBox Pro Labs, CTFs, reverse engineering Android apps and malware, and pulling apart cheap hardware. This blog is where the notes from all of that end up.',
+    'Outside work I spend most of my time on HackTheBox, CTFs, reverse engineering Android apps and malware, and pulling apart cheap hardware. This blog is where the notes from all of that end up.',
   ],
   focus: [
     'Web & API penetration testing',
