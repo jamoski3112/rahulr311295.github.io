@@ -1,0 +1,967 @@
+{
+  "fetchedAt": "2026-09-14T08:31:59.307Z",
+  "userId": 5938,
+  "profileUrl": "https://app.hackthebox.com/public/users/5938",
+  "name": "RahulR",
+  "avatar": "/assets/images/htb/avatar.png",
+  "rank": "Elite Hacker",
+  "rankId": 5,
+  "nextRank": "Guru",
+  "rankProgress": 22.5,
+  "ranking": 146,
+  "points": 1414,
+  "userOwns": 250,
+  "systemOwns": 231,
+  "respects": 39,
+  "userBloods": 0,
+  "systemBloods": 0,
+  "joined": "2017-07-17T07:56:35.000000Z",
+  "country": "India",
+  "team": {
+    "name": "YetAnotherSecurity",
+    "ranking": 60,
+    "members": 5,
+    "logo": "https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/teams/a981f2b708044d6fb4a71a1463242520_thumb.jpg"
+  },
+  "machines": {
+    "solved": 229,
+    "total": 552,
+    "percentage": 41,
+    "byDifficulty": [
+      {
+        "name": "Easy",
+        "owned": 104,
+        "total": 164,
+        "percentage": 63.41
+      },
+      {
+        "name": "Medium",
+        "owned": 94,
+        "total": 194,
+        "percentage": 48.45
+      },
+      {
+        "name": "Hard",
+        "owned": 22,
+        "total": 124,
+        "percentage": 17.74
+      },
+      {
+        "name": "Insane",
+        "owned": 9,
+        "total": 70,
+        "percentage": 12.86
+      }
+    ]
+  },
+  "challenges": {
+    "solved": 165,
+    "total": 853,
+    "percentage": 19,
+    "byCategory": [
+      {
+        "name": "Reversing",
+        "owned": 23,
+        "total": 101,
+        "percentage": 23
+      },
+      {
+        "name": "Crypto",
+        "owned": 33,
+        "total": 132,
+        "percentage": 25
+      },
+      {
+        "name": "Pwn",
+        "owned": 3,
+        "total": 136,
+        "percentage": 2
+      },
+      {
+        "name": "Web",
+        "owned": 36,
+        "total": 171,
+        "percentage": 21
+      },
+      {
+        "name": "Misc",
+        "owned": 9,
+        "total": 60,
+        "percentage": 15
+      },
+      {
+        "name": "Forensics",
+        "owned": 8,
+        "total": 77,
+        "percentage": 10
+      },
+      {
+        "name": "Mobile",
+        "owned": 13,
+        "total": 24,
+        "percentage": 54
+      },
+      {
+        "name": "OSINT",
+        "owned": 3,
+        "total": 11,
+        "percentage": 27
+      },
+      {
+        "name": "Hardware",
+        "owned": 10,
+        "total": 42,
+        "percentage": 24
+      },
+      {
+        "name": "GamePwn",
+        "owned": 4,
+        "total": 13,
+        "percentage": 31
+      },
+      {
+        "name": "Blockchain",
+        "owned": 8,
+        "total": 17,
+        "percentage": 47
+      },
+      {
+        "name": "AI/ML",
+        "owned": 6,
+        "total": 18,
+        "percentage": 33
+      },
+      {
+        "name": "Coding",
+        "owned": 9,
+        "total": 18,
+        "percentage": 50
+      },
+      {
+        "name": "Secure Coding",
+        "owned": 0,
+        "total": 6,
+        "percentage": 0
+      },
+      {
+        "name": "ICS",
+        "owned": 0,
+        "total": 11,
+        "percentage": 0
+      },
+      {
+        "name": "Quantum",
+        "owned": 0,
+        "total": 7,
+        "percentage": 0
+      },
+      {
+        "name": "Satellite",
+        "owned": 0,
+        "total": 9,
+        "percentage": 0
+      }
+    ]
+  },
+  "prolabs": [
+    {
+      "name": "RastaLabs",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9178-059d-4991-ad9e-35fe1fc8ce18.svg",
+      "percentage": 100,
+      "owned": 22,
+      "total": 22
+    },
+    {
+      "name": "Offshore",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-f589-47c1-9eca-d506189b95ba.svg",
+      "percentage": 100,
+      "owned": 38,
+      "total": 38
+    },
+    {
+      "name": "Cybernetics",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-e688-459f-bd2d-a33cb5c8143e.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 25
+    },
+    {
+      "name": "Dante",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-de27-465e-89f0-a54f7c5fe859.svg",
+      "percentage": 100,
+      "owned": 27,
+      "total": 27
+    },
+    {
+      "name": "APTLabs",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-cbe7-4616-9b4e-d1c1dcce41ac.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 20
+    },
+    {
+      "name": "Zephyr",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-ac01-44ab-bb9d-ff9a3682cc64.svg",
+      "percentage": 100,
+      "owned": 17,
+      "total": 17
+    },
+    {
+      "name": "FullHouse",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-a17a-472e-95cd-8531c71eb75c.svg",
+      "percentage": 100,
+      "owned": 7,
+      "total": 7
+    },
+    {
+      "name": "Alchemy",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-9e72-43e9-b511-7b1f10da9843.svg",
+      "percentage": 100,
+      "owned": 21,
+      "total": 21
+    },
+    {
+      "name": "Xen",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-9bb5-477e-a400-ac2efeebd91a.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 6
+    },
+    {
+      "name": "P.O.O",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4de635-3722-4d4b-8267-c7ee7bffd6a1.svg",
+      "percentage": 100,
+      "owned": 5,
+      "total": 5
+    },
+    {
+      "name": "Hades",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-9462-4722-8c8c-4050b93d7e60.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 7
+    },
+    {
+      "name": "RPG",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-86a3-472f-b48c-6d73e9cd1975.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 6
+    },
+    {
+      "name": "Solar",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-8401-4944-8c34-b9742b6d3a53.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 7
+    },
+    {
+      "name": "Ascension",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-817f-45a3-bd01-29ef49c8f458.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 7
+    },
+    {
+      "name": "Odyssey",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9e4d9177-7e1e-45e2-b5ce-973d8529b7fa.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 7
+    },
+    {
+      "name": "Wanderer",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9eae4da0-4fd8-42cb-89ba-ad5291d8ac73.svg",
+      "percentage": 35,
+      "owned": 7,
+      "total": 20
+    },
+    {
+      "name": "Puppet",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9f30eef8-35b0-4372-b59b-136069efd81a.svg",
+      "percentage": 25,
+      "owned": 1,
+      "total": 4
+    },
+    {
+      "name": "Mythical",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9f30efd2-a1f1-4d9c-bda5-defd649772b1.svg",
+      "percentage": 33,
+      "owned": 1,
+      "total": 3
+    },
+    {
+      "name": "Ifrit",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9fe44222-7f11-4d47-8456-50a57c9e36c0.svg",
+      "percentage": 100,
+      "owned": 7,
+      "total": 7
+    },
+    {
+      "name": "Heron",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9f8370d8-740e-4af7-b90d-a492dcc7a4ad.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 3
+    },
+    {
+      "name": "Klendathu",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9f837020-8935-4ac8-bd1e-7e9ce35ae7b6.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 3
+    },
+    {
+      "name": "Unintended",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9fbdcaa0-4238-4320-9ba0-63273a60d6f7.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 4
+    },
+    {
+      "name": "Tengu",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9fbdd1bd-e17d-4c05-9f4c-f65aafc51fa4.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 3
+    },
+    {
+      "name": "Tea",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9ff60a0f-0288-4f5b-962c-752ceeb9b11d.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 3
+    },
+    {
+      "name": "Kaiju",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/9ff60931-f818-4d4e-b979-e762ebfff6d5.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 4
+    },
+    {
+      "name": "Wutai",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/a03053df-f23c-49ba-8817-b3f8b70c1095.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 12
+    },
+    {
+      "name": "Sidecar",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/a03ab53d-85af-4390-b1ff-7b3ddfc5b07d.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 2
+    },
+    {
+      "name": "Push",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/a03ab26e-f6c0-4e7f-896f-dff8d5c4862e.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 2
+    },
+    {
+      "name": "Control",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/a074ddda-7d74-4c12-a733-6c9182ab60d8.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 3
+    },
+    {
+      "name": "Intercept",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/a074ddf4-5f51-4d7b-abe7-6c16ca8503bd.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 2
+    },
+    {
+      "name": "Shinra",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/a0ede325-53b5-43f7-84e8-8f45993c0a2d-1769435785.svg",
+      "percentage": 0,
+      "owned": 0,
+      "total": 12
+    },
+    {
+      "name": "Reflection",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/a0edebb6-6656-49ba-9c78-3b1232d779b2-1769437222.png",
+      "percentage": 0,
+      "owned": 0,
+      "total": 3
+    },
+    {
+      "name": "Trusted",
+      "avatar": "https://cdn.services-k8s.prod.aws.htb.systems/content/professional_labs/avatar_400/a0edf9c8-0004-4da0-8464-00b7b226a65c-1769439583.png",
+      "percentage": 100,
+      "owned": 2,
+      "total": 2
+    }
+  ],
+  "fortresses": [
+    {
+      "name": "Jet",
+      "avatar": "https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/c4ca4238a0b923820dcc509a6f75849b_logo.svg",
+      "percentage": 100,
+      "owned": 11,
+      "total": 11
+    },
+    {
+      "name": "Akerva",
+      "avatar": "https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/c81e728d9d4c2f636f067f89cc14862c_logo.svg",
+      "percentage": 100,
+      "owned": 8,
+      "total": 8
+    },
+    {
+      "name": "Context",
+      "avatar": "https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/eccbc87e4b5ce2fe28308fd9f2a7baf3_logo.svg",
+      "percentage": 100,
+      "owned": 7,
+      "total": 7
+    },
+    {
+      "name": "Synacktiv",
+      "avatar": "https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/e4da3b7fbbce2345d7772b0674a318d5_logo.svg",
+      "percentage": 100,
+      "owned": 7,
+      "total": 7
+    },
+    {
+      "name": "Faraday",
+      "avatar": "https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/1679091c5a880faf6fb5e6087eb1b2dc_logo.svg",
+      "percentage": 100,
+      "owned": 7,
+      "total": 7
+    },
+    {
+      "name": "AWS",
+      "avatar": "https://htb-mp-prod-public-storage.s3.eu-central-1.amazonaws.com/fortresses/8f14e45fceea167a5a36dedd4bea2543_logo.svg",
+      "percentage": 100,
+      "owned": 10,
+      "total": 10
+    }
+  ],
+  "badges": [
+    {
+      "name": "Respected",
+      "description": "Is respected by more than 10 members.",
+      "icon": "fas fa-star",
+      "earned": "2018-05-10T17:28:02.000Z"
+    },
+    {
+      "name": "Brainfucked",
+      "description": "Owned the Brainfuck machine.",
+      "icon": "fas fa-bolt",
+      "earned": "2019-11-23T17:00:12.000Z"
+    },
+    {
+      "name": "Damaging Experience",
+      "description": "Owned the Calamity machine.",
+      "icon": "fas fa-ambulance",
+      "earned": "2019-12-02T14:13:21.000Z"
+    },
+    {
+      "name": "Predicted the Future!",
+      "description": "Owned the Mantis machine.",
+      "icon": "fas fa-key",
+      "earned": "2019-12-11T09:09:05.000Z"
+    },
+    {
+      "name": "Star Giver",
+      "description": "Written a testimonial and rated Hack The Box!",
+      "icon": "far fa-star",
+      "earned": "2018-04-26T12:41:49.000Z"
+    },
+    {
+      "name": "Whale Hunter",
+      "description": "Owned the Ariekei machine.",
+      "icon": "fas fa-ship",
+      "earned": "2020-01-31T18:32:45.000Z"
+    },
+    {
+      "name": "Woke Up!",
+      "description": "Owned the Nightmare machine.",
+      "icon": "fas fa-bed",
+      "earned": "2018-06-10T07:59:59.000Z"
+    },
+    {
+      "name": "Hamster",
+      "description": "Completed 25% of RastaLabs",
+      "icon": "fab fa-superpowers",
+      "earned": "2026-03-25T12:47:22.000Z"
+    },
+    {
+      "name": "House Mouse",
+      "description": "Completed 50% of RastaLabs",
+      "icon": "fas fa-terminal",
+      "earned": "2026-03-25T12:47:22.000Z"
+    },
+    {
+      "name": "Roof Rat",
+      "description": "Completed 75% of RastaLabs",
+      "icon": "fas fa-user-secret",
+      "earned": "2026-03-25T12:47:22.000Z"
+    },
+    {
+      "name": "Packrat",
+      "description": "Completed 100% of RastaLabs",
+      "icon": "fas fa-flag-checkered",
+      "earned": "2026-03-25T12:47:22.000Z"
+    },
+    {
+      "name": "Down the Rabbit Hole!",
+      "description": "Owned the Rabbit machine.",
+      "icon": "fas fa-battery-empty",
+      "earned": "2018-06-02T13:52:26.000Z"
+    },
+    {
+      "name": "Castling",
+      "description": "Completed P.O.O. Mini Pro Lab",
+      "icon": "fas fa-chess",
+      "earned": "2026-05-07T08:11:31.000Z"
+    },
+    {
+      "name": "Respected by Jet",
+      "description": "Completed the Jet Fortress",
+      "icon": "fab fa-fort-awesome",
+      "earned": "2021-01-30T09:36:59.000Z"
+    },
+    {
+      "name": "Recruit",
+      "description": "Completed 25% of Offshore",
+      "icon": "fas fa-child",
+      "earned": "2026-04-18T15:09:03.000Z"
+    },
+    {
+      "name": "Trainee",
+      "description": "Completed 50% of Offshore",
+      "icon": "fas fa-user-graduate",
+      "earned": "2026-04-18T15:09:03.000Z"
+    },
+    {
+      "name": "Field Agent",
+      "description": "Completed 75% of Offshore",
+      "icon": "fas fa-user-secret",
+      "earned": "2026-04-18T15:09:03.000Z"
+    },
+    {
+      "name": "Master Spy",
+      "description": "Completed 100% of Offshore",
+      "icon": "fas fa-user-ninja",
+      "earned": "2026-04-18T15:09:03.000Z"
+    },
+    {
+      "name": "Ticket Master",
+      "description": "Owned the CTF machine.",
+      "icon": "fas fa-ticket-alt",
+      "earned": "2026-07-20T10:55:13.000Z"
+    },
+    {
+      "name": "Cracker",
+      "description": "Owned the KryptOS machine.",
+      "icon": "fas fa-key",
+      "earned": "2026-07-20T11:20:56.000Z"
+    },
+    {
+      "name": "Respected by Akerva",
+      "description": "Completed the Akerva Fortress",
+      "icon": "fab fa-fort-awesome",
+      "earned": "2022-12-14T09:05:12.000Z"
+    },
+    {
+      "name": "Saddle Up",
+      "description": "Completed 25% of Dante",
+      "icon": "far fa-horse-saddle",
+      "earned": "2025-11-14T12:38:44.000Z"
+    },
+    {
+      "name": "Round 'em up, cowboy",
+      "description": "Completed 50% of Dante",
+      "icon": "fas fa-hat-cowboy-side",
+      "earned": "2025-11-14T12:38:44.000Z"
+    },
+    {
+      "name": "Riding shotgun",
+      "description": "Completed 75% of Dante",
+      "icon": "fas fa-wagon-covered",
+      "earned": "2025-11-14T12:38:44.000Z"
+    },
+    {
+      "name": "Gunslinger",
+      "description": "Completed 100% of Dante",
+      "icon": "fas fa-user-cowboy",
+      "earned": "2025-11-14T12:38:44.000Z"
+    },
+    {
+      "name": "Respected by Context",
+      "description": "Completed the Context Fortress",
+      "icon": "fas fa-lock-open",
+      "earned": "2022-12-14T09:09:45.000Z"
+    },
+    {
+      "name": "Gotta nginx them all!",
+      "description": "Owned the nginxatsu challenge",
+      "icon": "fas fa-bolt",
+      "earned": "2025-01-29T14:05:25.000Z"
+    },
+    {
+      "name": "SRT Track",
+      "description": "Completed the Synack Red Team Track",
+      "icon": "fas fa-plug",
+      "earned": "2026-07-21T05:45:55.000Z"
+    },
+    {
+      "name": "Respected by Synacktiv",
+      "description": "Pwned the Synacktiv Fortress",
+      "icon": "fas fa-vihara",
+      "earned": "2026-08-21T09:25:23.000Z"
+    },
+    {
+      "name": "Respected by Faraday",
+      "description": "Pwned the Faraday Fortress",
+      "icon": "fas fa-chess-rook",
+      "earned": "2026-08-18T06:03:20.000Z"
+    },
+    {
+      "name": "Got pumped!",
+      "description": "Owned the Protein Cookies challenge",
+      "icon": "fas fa-dumbbell",
+      "earned": "2026-08-20T04:40:07.000Z"
+    },
+    {
+      "name": "Uncovered the math conspiracy",
+      "description": "Owned the Always Has Been challenge",
+      "icon": "fa fa-user-astronaut",
+      "earned": "2026-08-24T12:25:32.000Z"
+    },
+    {
+      "name": "Shapeshifter",
+      "description": "Owned the Poly challenge.",
+      "icon": "fas fa-wand-magic",
+      "earned": "2022-12-16T07:04:30.000Z"
+    },
+    {
+      "name": "All your base are belong to us",
+      "description": "Owned the Nostalgia challenge.",
+      "icon": "fas fa-game-console-handheld",
+      "earned": "2022-12-16T06:48:20.000Z"
+    },
+    {
+      "name": "It's a me, Birdio!",
+      "description": "Owned the HackyBird challenge.",
+      "icon": "fas fa-dove",
+      "earned": "2022-12-16T06:49:45.000Z"
+    },
+    {
+      "name": "Elliptic Heart",
+      "description": "Owned the Birds of randomness challenge.",
+      "icon": "fas fa-hand-holding-heart",
+      "earned": "2026-08-20T10:44:29.000Z"
+    },
+    {
+      "name": "Criss-Cross Cryptosauce",
+      "description": "Owned the xorxorxor challenge.",
+      "icon": "fas fa-apple-alt",
+      "earned": "2026-08-20T04:44:11.000Z"
+    },
+    {
+      "name": "Escaped from capture",
+      "description": "Owned the ImageTok challenge.",
+      "icon": "fas fa-camera-retro",
+      "earned": "2026-07-20T08:25:02.000Z"
+    },
+    {
+      "name": "No donuts for you!",
+      "description": "Owned the Mr. Burns challenge.",
+      "icon": "fas fa-hands-usd",
+      "earned": "2025-01-29T13:08:38.000Z"
+    },
+    {
+      "name": "Found out who Joe is",
+      "description": "Owned the Coffee Invocation challenge.",
+      "icon": "fas fa-mug-marshmallows",
+      "earned": "2026-09-03T00:43:19.000Z"
+    },
+    {
+      "name": "Cyber bomb defusal",
+      "description": "Owned the Red Failure challenge.",
+      "icon": "fal fa-bomb",
+      "earned": "2026-09-01T08:41:28.000Z"
+    },
+    {
+      "name": "Factor Me In",
+      "description": "Owned the Optimus Prime challenge.",
+      "icon": "fas fa-square-root-alt",
+      "earned": "2022-12-16T07:06:22.000Z"
+    },
+    {
+      "name": "Buzzer Beater",
+      "description": "Owned the The Last Dance challenge.",
+      "icon": "fal fa-basketball-hoop",
+      "earned": "2025-10-15T09:49:13.000Z"
+    },
+    {
+      "name": "Yes and No",
+      "description": "Owned the Twisted Entanglement challenge.",
+      "icon": "far fa-atom-alt",
+      "earned": "2026-08-20T09:59:35.000Z"
+    },
+    {
+      "name": "Send Them Packing",
+      "description": "Owned the mysterybox challenge.",
+      "icon": "fal fa-truck-loading",
+      "earned": "2026-08-20T10:53:27.000Z"
+    },
+    {
+      "name": "Clone Wars",
+      "description": "Owned the Embryonic Plant challenge.",
+      "icon": "far fa-seedling",
+      "earned": "2026-08-19T11:30:20.000Z"
+    },
+    {
+      "name": "Respected by AWS",
+      "description": "Completed the AWS Fortress",
+      "icon": "fab fa-aws",
+      "earned": "2026-08-19T07:24:41.000Z"
+    },
+    {
+      "name": "A Gentle Breeze",
+      "description": "Completed 25% of Zephyr",
+      "icon": "fas fa-wind",
+      "earned": "2026-05-08T09:07:42.000Z"
+    },
+    {
+      "name": "Approaching the Storm",
+      "description": "Completed 50% of Zephyr",
+      "icon": "fas fa-cloud-bolt",
+      "earned": "2026-05-17T11:20:46.000Z"
+    },
+    {
+      "name": "Into the Hurricane",
+      "description": "Completed 75% of Zephyr",
+      "icon": "fas fa-hurricane",
+      "earned": "2026-05-25T07:57:43.000Z"
+    },
+    {
+      "name": "Survived the Storm",
+      "description": "Completed 100% of Zephyr",
+      "icon": "fas fa-shield-check",
+      "earned": "2026-05-25T09:06:28.000Z"
+    },
+    {
+      "name": "Straight Flush",
+      "description": "Completed FullHouse Mini Pro Lab",
+      "icon": "fa-solid fa-spade",
+      "earned": "2026-05-05T05:27:37.000Z"
+    },
+    {
+      "name": "Bronze - Season 4",
+      "description": "Achieved bronze tier in Seasonal",
+      "icon": "fas fa-chess-knight",
+      "earned": "2024-02-15T15:55:44.000Z"
+    },
+    {
+      "name": "Silver - Season 4",
+      "description": "Achieved silver tier in Seasonal",
+      "icon": "fas fa-chess-bishop",
+      "earned": "2024-03-30T05:06:12.000Z"
+    },
+    {
+      "name": "Fall Survivor",
+      "description": "Owned the Skyfall machine.",
+      "icon": "fa-solid fa-cloud-sun-rain",
+      "earned": "2024-02-21T16:28:26.000Z"
+    },
+    {
+      "name": "Bronze - Season 6",
+      "description": "Achieved bronze tier in Seasonal",
+      "icon": "fas fa-chess-knight",
+      "earned": "2024-10-20T15:31:25.000Z"
+    },
+    {
+      "name": "Script Kiddie",
+      "description": "Has reached the Script Kiddie rank.",
+      "icon": "fa-solid fa-ghost",
+      "earned": "2024-09-11T12:06:31.000Z"
+    },
+    {
+      "name": "Hacker",
+      "description": "Has reached the Hacker rank.",
+      "icon": "fa-solid fa-user-hoodie",
+      "earned": "2024-09-11T12:06:31.000Z"
+    },
+    {
+      "name": "Pro Hacker",
+      "description": "Has reached the Pro Hacker rank.",
+      "icon": "fa-solid fa-gear-code",
+      "earned": "2024-09-11T12:06:31.000Z"
+    },
+    {
+      "name": "Elite Hacker",
+      "description": "Has reached the Elite Hacker rank.",
+      "icon": "fa-solid fa-starfighter",
+      "earned": "2024-09-11T12:06:31.000Z"
+    },
+    {
+      "name": "Sobriety",
+      "description": "Completed 25% of Alchemy",
+      "icon": "fas fa-glass-water",
+      "earned": "2026-05-26T14:57:42.000Z"
+    },
+    {
+      "name": "Euphoria",
+      "description": "Completed 50% of Alchemy",
+      "icon": "fas fa-beer-mug",
+      "earned": "2026-05-26T17:39:38.000Z"
+    },
+    {
+      "name": "Stupor",
+      "description": "Completed 75% of Alchemy",
+      "icon": "fas fa-martini-glass-citrus",
+      "earned": "2026-05-31T09:34:50.000Z"
+    },
+    {
+      "name": "Intoxicated",
+      "description": "Completed 100% of Alchemy",
+      "icon": "fas fa-face-woozy",
+      "earned": "2026-05-31T12:09:47.000Z"
+    },
+    {
+      "name": "Is There Anybody Out There?",
+      "description": "Owned 5 machines",
+      "icon": "fa-solid fa-eye-evil",
+      "earned": "2025-02-24T08:30:37.000Z"
+    },
+    {
+      "name": "Powering Up",
+      "description": "Owned 5 challenges",
+      "icon": "fa-solid fa-wand",
+      "earned": "2025-02-24T08:56:52.000Z"
+    },
+    {
+      "name": "Just Another Brick in the Wall",
+      "description": "Owned 10 machines",
+      "icon": "fa-solid fa-block-brick",
+      "earned": "2025-02-24T09:02:30.000Z"
+    },
+    {
+      "name": "I See Movement",
+      "description": "Owned 10 challenges",
+      "icon": "fa-solid fa-wand-sparkles",
+      "earned": "2025-02-24T09:02:32.000Z"
+    },
+    {
+      "name": "Comfortably Numb",
+      "description": "Owned 20 machines",
+      "icon": "fa-solid fa-mushroom",
+      "earned": "2025-02-24T09:18:47.000Z"
+    },
+    {
+      "name": "Withstood the Test of Time",
+      "description": "Owned 50 machines",
+      "icon": "fa-solid fa-face-smile-tear",
+      "earned": "2025-02-24T09:18:38.000Z"
+    },
+    {
+      "name": "Look at the Time",
+      "description": "Owned 100 machines",
+      "icon": "fa-solid fa-tombstone",
+      "earned": "2025-02-24T09:19:44.000Z"
+    },
+    {
+      "name": "The Danger Zone",
+      "description": "Owned 20 challenges",
+      "icon": "fa-solid fa-dungeon",
+      "earned": "2025-02-24T09:21:37.000Z"
+    },
+    {
+      "name": "The Harder They Fall",
+      "description": "Owned 50 challenges",
+      "icon": "fa-sharp fa-solid fa-book-skull",
+      "earned": "2025-08-11T08:55:07.000Z"
+    },
+    {
+      "name": "Flag Whisperer",
+      "description": "Owned 100 challenges",
+      "icon": "fa-solid fa-face-zipper",
+      "earned": "2026-08-20T05:55:41.000Z"
+    },
+    {
+      "name": "Investigator In The Making",
+      "description": "Solved 5 sherlocks",
+      "icon": "fa-solid fa-pancakes",
+      "earned": "2025-10-09T07:23:28.000Z"
+    },
+    {
+      "name": "Wow, That Was A SOCer",
+      "description": "Solved 10 sherlocks",
+      "icon": "fa-solid fa-socks",
+      "earned": "2026-07-13T10:10:12.000Z"
+    },
+    {
+      "name": "Trip Down Memory Lane",
+      "description": "Solved 20 sherlocks",
+      "icon": "fa-solid fa-scroll-old",
+      "earned": "2026-08-27T08:58:35.000Z"
+    },
+    {
+      "name": "Bronze - Season 8",
+      "description": "Achieved bronze tier in Seasonal",
+      "icon": "fas fa-chess-knight",
+      "earned": "2025-06-23T14:41:02.000Z"
+    },
+    {
+      "name": "Silver - Season 8",
+      "description": "Achieved silver tier in Seasonal",
+      "icon": "fas fa-chess-bishop",
+      "earned": "2025-07-19T08:07:05.000Z"
+    },
+    {
+      "name": "Drifter",
+      "description": "Completed 25% of Wanderer",
+      "icon": "fa-person-walking",
+      "earned": "2026-06-05T12:01:15.000Z"
+    },
+    {
+      "name": "Bronze - Season 9",
+      "description": "Achieved bronze tier in Seasonal",
+      "icon": "fas fa-chess-knight",
+      "earned": "2025-09-23T05:48:59.000Z"
+    },
+    {
+      "name": "Silver - Season 9",
+      "description": "Achieved silver tier in Seasonal",
+      "icon": "fas fa-chess-bishop",
+      "earned": "2025-10-01T15:43:45.000Z"
+    },
+    {
+      "name": "Curiousity",
+      "description": "Completed 25% of Ifrit",
+      "icon": "fa-solid fa-computer",
+      "earned": "2026-03-05T11:38:10.000Z"
+    },
+    {
+      "name": "Ignite",
+      "description": "Completed 50% of Ifrit",
+      "icon": "fa-solid fa-fire-flame-curved",
+      "earned": "2026-03-05T11:38:10.000Z"
+    },
+    {
+      "name": "Inferno",
+      "description": "Completed 75% of Ifrit",
+      "icon": "fa-solid fa-tornado",
+      "earned": "2026-03-05T11:38:10.000Z"
+    },
+    {
+      "name": "Resolve",
+      "description": "Completed 100% of Ifrit",
+      "icon": "fa-solid fa-cloud-showers-heavy",
+      "earned": "2026-03-05T11:38:10.000Z"
+    },
+    {
+      "name": "Trusted",
+      "description": "Completed Trusted Mini Pro Lab",
+      "icon": "fa-solid fa-star",
+      "earned": "2026-05-06T08:48:11.000Z"
+    }
+  ]
+}

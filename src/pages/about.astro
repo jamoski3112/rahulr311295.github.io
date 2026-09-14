@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { about } from '../data/about';
+import HtbProfile from '../components/HtbProfile.astro';
 ---
 <Base title="About" description={`${about.name} — ${about.headline}. ${about.summary[0]}`}>
   <div class="container about">
@@ -44,6 +45,11 @@ import { about } from '../data/about';
               </li>
             ))}
           </ol>
+        </section>
+
+        <section id="hackthebox">
+          <h2 class="h"><span class="prompt">$</span>htb --stats</h2>
+          <HtbProfile variant="full" />
         </section>
 
         <section>
@@ -145,6 +151,7 @@ import { about } from '../data/about';
   }
   .main section {
     margin-bottom: 2.5rem;
+    scroll-margin-top: 90px;
   }
   .h {
     font-size: 1.2rem;

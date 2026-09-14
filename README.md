@@ -10,6 +10,7 @@ Personal cybersecurity blog for Rahul R, rebuilt on [Astro](https://astro.build)
 | `npm run dev`       | Dev server at `http://localhost:4321` (search is disabled) |
 | `npm run build`     | Production build into `dist/` + Pagefind search index     |
 | `npm run preview`   | Serve `dist/` locally (search works here)                 |
+| `npm run htb`       | Refresh the HackTheBox profile snapshot in `src/data/htb.json` |
 | `npm run cms`       | Local Decap CMS backend; open `/admin/` on the dev server |
 | `npm run convert:jekyll` | Re-import posts from `../rahulr311295.github.io/_posts` |
 
@@ -41,6 +42,10 @@ htb:                                               # optional – renders the ma
 Images go in `public/assets/images/<slug>/` and are referenced as `/assets/images/<slug>/file.png`, exactly like before.
 
 Fenced blocks tagged `console`, `bash`, `sh`, `shell` or left untagged get the terminal-window chrome; every block gets a language label and a copy button.
+
+## HackTheBox status card
+
+`scripts/fetch-htb.mjs` pulls the public profile (rank, points, owns, machine/challenge progress, Pro Labs, Fortresses) from the HTB API into `src/data/htb.json` before every build. The API is CORS-locked, so this cannot run in the browser. If the fetch fails the committed snapshot is used. The deploy workflow also runs on a daily schedule so the numbers on the live site stay current. Change the user id via the `HTB_USER_ID` env var or the default in the script.
 
 ## CMS (Decap)
 

@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "node scripts/fetch-htb.mjs && astro build && pagefind --site dist",
+    "htb": "node scripts/fetch-htb.mjs",
     "preview": "astro preview",
     "cms": "npx decap-server",
     "astro": "astro",

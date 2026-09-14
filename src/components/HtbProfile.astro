@@ -1,0 +1,363 @@
+---
+import htb from '../data/htb.json';
+import Icon from './Icon.astro';
+interface Props { variant?: 'compact' | 'full' }
+const { variant = 'compact' } = Astro.props;
+const full = variant === 'full';
+const updated = new Date(htb.fetchedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+const joined = new Date(htb.joined).getFullYear();
+const stats = [
+  { label: 'global rank', value: `#${htb.ranking}` },
+  { label: 'points', value: htb.points },
+  { label: 'user owns', value: htb.userOwns },
+  { label: 'system owns', value: htb.systemOwns },
+  { label: 'respects', value: htb.respects },
+];
+const diffColor: Record<string, string> = { Easy: '#4caf50', Medium: '#e8a33d', Hard: '#ee5f5b', Insane: '#b072e0' };
+const prolabsDone = htb.prolabs.filter((l) => l.percentage === 100);
+const prolabsWip = htb.prolabs.filter((l) => l.percentage > 0 && l.percentage < 100).sort((a, b) => b.percentage - a.percentage);
+const fortressesDone = htb.fortresses.filter((f) => f.percentage === 100);
+const categories = [...htb.challenges.byCategory].filter((c) => c.owned > 0).sort((a, b) => b.owned - a.owned);
+---
+<div class:list={['htbp', { 'htbp--full': full }]}>
+  <div class="htbp__head">
+    <img class="htbp__avatar" src={htb.avatar} alt={`${htb.name} on HackTheBox`} width="64" height="64" loading="lazy" />
+    <div class="htbp__id">
+      <div class="htbp__name">
+        <a href={htb.profileUrl} target="_blank" rel="noopener noreferrer">{htb.name}</a>
+        <span class="htbp__rank">{htb.rank}</span>
+      </div>
+      <div class="htbp__sub mono">
+        {htb.team && <span>team {htb.team.name} · #{htb.team.ranking}</span>}
+        <span>since {joined}</span>
+      </div>
+    </div>
+    <a class="htbp__logo" href={htb.profileUrl} target="_blank" rel="noopener noreferrer" aria-label="HackTheBox profile">
+      <img src="/assets/images/hackthebox.webp" alt="" width="28" height="28" />
+      <span class="mono">hackthebox</span>
+    </a>
+  </div>
+
+  <ul class="htbp__stats">
+    {stats.map((s) => (
+      <li><span class="v mono">{s.value}</span><span class="l">{s.label}</span></li>
+    ))}
+  </ul>
+
+  <div class="htbp__progress">
+    <div class="htbp__bar" role="progressbar" aria-valuenow={htb.rankProgress} aria-valuemin="0" aria-valuemax="100" aria-label={`Progress to ${htb.nextRank}`}>
+      <span style={`width:${htb.rankProgress}%`}></span>
+    </div>
+    <div class="htbp__barlbl mono"><span>{htb.rank}</span><span>{htb.rankProgress}% → {htb.nextRank}</span></div>
+  </div>
+
+  {full && (
+    <div class="htbp__grid">
+      <section>
+        <h3 class="htbp__h"><span class="t">machines</span><span class="mono n">{htb.machines.solved}/{htb.machines.total}</span></h3>
+        <ul class="bars">
+          {htb.machines.byDifficulty.map((d) => (
+            <li>
+              <span class="bars__lbl">{d.name}</span>
+              <span class="bars__track"><span style={`width:${d.percentage}%;background:${diffColor[d.name] ?? 'var(--accent)'}`}></span></span>
+              <span class="bars__val mono">{d.owned}/{d.total}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section>
+        <h3 class="htbp__h"><span class="t">challenges</span><span class="mono n">{htb.challenges.solved}/{htb.challenges.total}</span></h3>
+        <ul class="bars">
+          {categories.slice(0, 8).map((c) => (
+            <li>
+              <span class="bars__lbl">{c.name}</span>
+              <span class="bars__track"><span style={`width:${c.percentage}%`}></span></span>
+              <span class="bars__val mono">{c.owned}/{c.total}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section class="span2">
+        <h3 class="htbp__h"><span class="t">pro labs</span><span class="mono n">{prolabsDone.length} completed</span></h3>
+        <ul class="chips">
+          {prolabsDone.map((l) => <li class="chip chip--done"><Icon name="star" size={12} />{l.name}</li>)}
+          {prolabsWip.map((l) => <li class="chip">{l.name} <span class="mono pct">{l.percentage}%</span></li>)}
+        </ul>
+      </section>
+      {fortressesDone.length > 0 && (
+        <section class="span2">
+          <h3 class="htbp__h"><span class="t">fortresses</span><span class="mono n">{fortressesDone.length}/{htb.fortresses.length}</span></h3>
+          <ul class="chips">
+            {fortressesDone.map((f) => <li class="chip chip--done"><Icon name="star" size={12} />{f.name}</li>)}
+          </ul>
+        </section>
+      )}
+    </div>
+  )}
+
+  <div class="htbp__foot mono">
+    <span>updated {updated}</span>
+    <a href={htb.profileUrl} target="_blank" rel="noopener noreferrer">view profile →</a>
+  </div>
+</div>
+
+<style>
+  .htbp {
+    --htb: #9fef00;
+    position: relative;
+    background:
+      radial-gradient(600px 220px at 100% 0%, rgba(159, 239, 0, 0.08), transparent 60%),
+      var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.4rem 1rem;
+    overflow: hidden;
+  }
+  .htbp::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: var(--htb);
+  }
+  .htbp__head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .htbp__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    border: 1px solid var(--border-strong);
+    object-fit: cover;
+    background: var(--bg-elev);
+  }
+  .htbp__id {
+    min-width: 0;
+    flex: 1;
+  }
+  .htbp__name {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .htbp__name a {
+    color: var(--text-strong);
+  }
+  .htbp__name a:hover {
+    color: var(--htb);
+  }
+  .htbp__rank {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--htb);
+    background: rgba(159, 239, 0, 0.12);
+    border: 1px solid rgba(159, 239, 0, 0.45);
+    border-radius: 999px;
+    padding: 0.1em 0.7em;
+  }
+  .htbp__sub {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    font-size: 0.74rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+  .htbp__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--muted);
+    font-size: 0.74rem;
+  }
+  .htbp__logo img {
+    width: 28px;
+    height: 28px;
+  }
+  .htbp__logo:hover {
+    color: var(--htb);
+  }
+  .htbp__stats {
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+  }
+  .htbp__stats li {
+    display: flex;
+    flex-direction: column;
+    padding: 0.55rem 0.7rem;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .htbp__stats .v {
+    color: var(--text-strong);
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .htbp__stats .l {
+    color: var(--muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .htbp__bar {
+    height: 8px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .htbp__bar span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #6fbf00, var(--htb));
+    border-radius: 999px;
+  }
+  .htbp__barlbl {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 0.35rem;
+  }
+  .htbp__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 2rem;
+    margin-top: 1.4rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+  }
+  .span2 {
+    grid-column: 1 / -1;
+  }
+  .htbp__h {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--htb);
+    margin: 0 0 0.6rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .htbp__h .t::before {
+    content: '// ';
+    color: var(--muted);
+  }
+  .htbp__h .n {
+    color: var(--muted);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .bars {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.4rem;
+  }
+  .bars li {
+    display: grid;
+    grid-template-columns: 82px 1fr 58px;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+  }
+  .bars__lbl {
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .bars__track {
+    height: 6px;
+    background: var(--bg-elev);
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .bars__track span {
+    display: block;
+    height: 100%;
+    background: var(--htb);
+    border-radius: 999px;
+  }
+  .bars__val {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-align: right;
+  }
+  .chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    padding: 0.2em 0.7em;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background: var(--bg-elev);
+    color: var(--muted);
+  }
+  .chip--done {
+    color: var(--text-strong);
+    border-color: rgba(159, 239, 0, 0.45);
+  }
+  .chip--done svg {
+    color: var(--htb);
+  }
+  .chip .pct {
+    color: var(--accent);
+  }
+  .htbp__foot {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+  .htbp__foot a {
+    color: var(--muted);
+  }
+  .htbp__foot a:hover {
+    color: var(--htb);
+  }
+  @media (max-width: 760px) {
+    .htbp__stats {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .htbp__grid {
+      grid-template-columns: 1fr;
+    }
+    .htbp__logo span {
+      display: none;
+    }
+  }
+  @media (max-width: 420px) {
+    .htbp__stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
