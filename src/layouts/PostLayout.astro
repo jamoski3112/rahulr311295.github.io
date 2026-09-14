@@ -1,0 +1,274 @@
+---
+import Base from './Base.astro';
+import '../styles/prose.css';
+import type { MarkdownHeading } from 'astro';
+import type { Post } from '../lib/posts';
+import { fmtDate, isoDate, readingTime, slugify, postUrl } from '../lib/posts';
+import HtbInfobox from '../components/HtbInfobox.astro';
+import Toc from '../components/Toc.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../consts';
+
+interface Props { post: Post; headings: MarkdownHeading[]; prev?: Post; next?: Post }
+const { post, headings, prev, next } = Astro.props;
+const { title, description, date, updated, categories, tags, htb, teaser } = post.data;
+const mins = readingTime(post.body);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: date.toISOString(),
+  dateModified: (updated ?? date).toISOString(),
+  author: { '@type': 'Person', name: SITE.author, url: SITE.url },
+  image: teaser ? new URL(teaser, Astro.site).toString() : undefined,
+  mainEntityOfPage: new URL(postUrl(post), Astro.site).toString(),
+  keywords: tags.join(', '),
+};
+---
+<Base title={title} description={description} image={teaser} type="article" publishedTime={date} tags={tags}>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  <div class="container post-wrap" data-pagefind-body>
+    <article class="post">
+      <header class="post__header">
+        <div class="post__meta mono">
+          {categories.map((c) => (
+            <a class="post__cat" href={`/categories/${slugify(c)}/`}><Icon name="folder" size={13} />{c}</a>
+          ))}
+          <span><Icon name="calendar" size={13} /><time datetime={isoDate(date)}>{fmtDate(date)}</time></span>
+          <span><Icon name="clock" size={13} />{mins} min read</span>
+        </div>
+        <h1 class="post__title">{title}</h1>
+        {description && <p class="post__desc">{description}</p>}
+      </header>
+
+      {htb && <HtbInfobox htb={htb} />}
+
+      <div class="prose" id="article">
+        <slot />
+      </div>
+
+      <footer class="post__footer">
+        {tags.length > 0 && (
+          <ul class="post__tags">
+            {tags.map((t) => (
+              <li><a class="pill" href={`/tags/${slugify(t)}/`}><Icon name="tag" size={11} />{t}</a></li>
+            ))}
+          </ul>
+        )}
+        <nav class="post__nav" aria-label="Adjacent posts">
+          {prev ? (
+            <a class="post__nav-link" href={postUrl(prev)} rel="prev">
+              <span class="lbl"><Icon name="arrowLeft" size={14} /> Older</span>
+              <span class="ttl">{prev.data.title}</span>
+            </a>
+          ) : <span />}
+          {next ? (
+            <a class="post__nav-link post__nav-link--next" href={postUrl(next)} rel="next">
+              <span class="lbl">Newer <Icon name="arrowRight" size={14} /></span>
+              <span class="ttl">{next.data.title}</span>
+            </a>
+          ) : <span />}
+        </nav>
+      </footer>
+    </article>
+
+    <aside class="post__side">
+      <div class="sticky">
+        <Toc headings={headings} />
+      </div>
+    </aside>
+  </div>
+</Base>
+
+<style>
+  .post-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
+  }
+  @media (min-width: 1100px) {
+    .post-wrap {
+      grid-template-columns: minmax(0, 1fr) 240px;
+    }
+  }
+  .post {
+    min-width: 0;
+    max-width: 820px;
+  }
+  .post__side {
+    display: none;
+  }
+  @media (min-width: 1100px) {
+    .post__side {
+      display: block;
+    }
+    .sticky {
+      position: sticky;
+      top: 90px;
+    }
+  }
+  .post__header {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .post__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.1rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+  .post__meta > * {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+  .post__cat {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .post__title {
+    font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+    margin-bottom: 0.6rem;
+  }
+  .post__desc {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.02rem;
+  }
+  .post__footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .post__tags {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .post__nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .post__nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text-strong);
+  }
+  .post__nav-link:hover {
+    border-color: var(--accent);
+  }
+  .post__nav-link--next {
+    text-align: right;
+    align-items: flex-end;
+  }
+  .post__nav-link .lbl {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .post__nav-link .ttl {
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+  @media (max-width: 560px) {
+    .post__nav {
+      grid-template-columns: 1fr;
+    }
+    .post__nav-link--next {
+      text-align: left;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<script>
+  // language labels + copy buttons on code blocks
+  document.querySelectorAll<HTMLPreElement>('.prose pre').forEach((pre) => {
+    const lang = pre.dataset.language && pre.dataset.language !== 'plaintext' ? pre.dataset.language : '';
+    if (lang) {
+      const l = document.createElement('span');
+      l.className = 'code-lang';
+      l.textContent = lang;
+      pre.appendChild(l);
+    }
+    const btn = document.createElement('button');
+    btn.className = 'code-copy';
+    btn.type = 'button';
+    btn.textContent = 'copy';
+    btn.addEventListener('click', async () => {
+      const code = pre.querySelector('code')?.innerText ?? '';
+      try {
+        await navigator.clipboard.writeText(code);
+        btn.textContent = 'copied';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'copy';
+          btn.classList.remove('copied');
+        }, 1600);
+      } catch {
+        btn.textContent = 'error';
+      }
+    });
+    pre.appendChild(btn);
+  });
+
+  // click-to-enlarge lightbox for article images
+  const lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-label', 'Enlarged image');
+  const lbImg = document.createElement('img');
+  lb.appendChild(lbImg);
+  document.body.appendChild(lb);
+  const closeLb = () => lb.classList.remove('open');
+  lb.addEventListener('click', closeLb);
+  document.addEventListener('keydown', (e) => e.key === 'Escape' && closeLb());
+  document.querySelectorAll<HTMLImageElement>('.prose img').forEach((img) => {
+    if (img.closest('a')) return;
+    img.addEventListener('click', () => {
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt;
+      lb.classList.add('open');
+    });
+  });
+
+  // TOC scroll-spy
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.toc a[data-toc]')];
+  if (links.length) {
+    const map = new Map(links.map((a) => [a.dataset.toc!, a]));
+    const targets = [...map.keys()].map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+    let current: HTMLAnchorElement | null = null;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            current?.classList.remove('active');
+            current = map.get(e.target.id) ?? null;
+            current?.classList.add('active');
+          }
+        }
+      },
+      { rootMargin: '-80px 0px -70% 0px', threshold: 0 },
+    );
+    targets.forEach((t) => io.observe(t));
+  }
+</script>

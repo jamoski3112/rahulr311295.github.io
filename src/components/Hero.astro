@@ -1,0 +1,144 @@
+---
+import { SITE, SOCIAL } from '../consts';
+import Icon from './Icon.astro';
+interface Props { stats: { posts: number; categories: number; tags: number; htb: number } }
+const { stats } = Astro.props;
+---
+<section class="hero">
+  <div class="hero__text">
+    <p class="eyebrow">rahulr.in</p>
+    <h1>Security writeups<br />and research notes.</h1>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="/posts/"><Icon name="terminal" size={16} /> Browse posts</a>
+      <a class="btn" href="/about/">About me</a>
+    </div>
+    <ul class="hero__social">
+      {SOCIAL.filter((s) => s.icon !== 'rss').map((s) => (
+        <li><a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.name}><Icon name={s.icon} size={16} />{s.name}</a></li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="terminal" aria-label="Terminal window">
+    <div class="terminal__bar">
+      <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+      <span class="terminal__title">rahul@rahulr.in: ~</span>
+    </div>
+    <pre class="terminal__body" id="hero-term"><code><span class="p">rahul@rahulr.in</span>:<span class="d">~</span>$ <span class="c">whoami</span>
+<span class="o">{SITE.author} · {SITE.tagline}</span>
+<span class="o">{SITE.location}</span>
+<span class="p">rahul@rahulr.in</span>:<span class="d">~</span>$ <span class="c">cat</span> interests.txt
+<span class="o">pentesting · active directory · cloud · android</span>
+<span class="o">reverse engineering · malware · hardware · ctf</span>
+<span class="p">rahul@rahulr.in</span>:<span class="d">~</span>$ <span class="c">ls</span> -la blog/
+<span class="o">{String(stats.posts).padStart(3)}  posts        {String(stats.htb).padStart(3)}  htb-writeups</span>
+<span class="o">{String(stats.categories).padStart(3)}  categories   {String(stats.tags).padStart(3)}  tags</span>
+<span class="p">rahul@rahulr.in</span>:<span class="d">~</span>$ <span class="cursor">▍</span></code></pre>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    padding-block: 1.5rem 3.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(1.9rem, 4vw, 2.9rem);
+    margin: 0.35rem 0 1rem;
+  }
+  .hl {
+    color: var(--accent);
+  }
+  .lede {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 56ch;
+    margin: 0 0 1.5rem;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.4rem;
+  }
+  .hero__social {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+  }
+  .hero__social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    color: var(--muted);
+  }
+  .hero__social a:hover {
+    color: var(--accent);
+  }
+
+  .terminal {
+    background: var(--code-bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    box-shadow: var(--shadow), 0 0 60px rgba(22, 200, 209, 0.08);
+    overflow: hidden;
+    font-family: var(--font-mono);
+  }
+  .terminal__bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0.6rem 0.9rem;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+  }
+  .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+  }
+  .dot--r { background: #ff5f56; }
+  .dot--y { background: #ffbd2e; }
+  .dot--g { background: #27c93f; }
+  .terminal__title {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .terminal__body {
+    margin: 0;
+    padding: 1.1rem 1.2rem 1.2rem;
+    font-size: 0.84rem;
+    line-height: 1.75;
+    color: var(--text);
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .terminal__body .p { color: var(--accent-2); }
+  .terminal__body .d { color: #79c0ff; }
+  .terminal__body .c { color: var(--accent); }
+  .terminal__body .o { color: var(--muted); }
+  .cursor {
+    color: var(--accent);
+    animation: blink 1s steps(2, start) infinite;
+  }
+  @keyframes blink {
+    to { visibility: hidden; }
+  }
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      padding-bottom: 2.5rem;
+    }
+  }
+</style>

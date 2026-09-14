@@ -1,0 +1,326 @@
+/* Article body typography */
+.prose {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: var(--text);
+  overflow-wrap: break-word;
+}
+.prose > :first-child {
+  margin-top: 0;
+}
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  scroll-margin-top: 90px;
+  position: relative;
+}
+.prose h1 {
+  font-size: 1.75rem;
+  margin: 2.4rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+.prose h2 {
+  font-size: 1.45rem;
+  margin: 2.4rem 0 0.9rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+.prose h3 {
+  font-size: 1.18rem;
+  margin: 1.9rem 0 0.7rem;
+}
+.prose h4 {
+  font-size: 1.02rem;
+  margin: 1.5rem 0 0.5rem;
+}
+.prose h2::before,
+.prose h3::before {
+  content: '#';
+  color: var(--accent);
+  opacity: 0.55;
+  font-family: var(--font-mono);
+  margin-right: 0.45em;
+  font-weight: 500;
+}
+.prose h3::before {
+  content: '##';
+}
+.prose p {
+  margin: 0 0 1.2rem;
+}
+.prose a {
+  text-decoration: underline;
+  text-decoration-color: rgba(22, 200, 209, 0.4);
+  text-underline-offset: 3px;
+}
+.prose a:hover {
+  text-decoration-color: currentColor;
+}
+.prose strong {
+  color: var(--text-strong);
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.5rem;
+  margin: 0 0 1.2rem;
+}
+.prose li {
+  margin-bottom: 0.3rem;
+}
+.prose li::marker {
+  color: var(--accent);
+}
+.prose hr {
+  border: 0;
+  border-top: 1px dashed var(--border-strong);
+  margin: 2.5rem 0;
+}
+.prose blockquote {
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0 8px 8px 0;
+  color: var(--text);
+}
+.prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* images: fixed display height regardless of source resolution; click to enlarge */
+.prose img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  cursor: zoom-in;
+}
+.prose img[src$='.gif'] {
+  border: 0;
+}
+.prose figure,
+.prose .video_container {
+  margin: 1.5rem 0;
+}
+.prose video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #000;
+}
+.prose figcaption {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* inline code */
+.prose :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  padding: 0.12em 0.4em;
+  border-radius: 5px;
+  background: rgba(22, 200, 209, 0.1);
+  border: 1px solid rgba(22, 200, 209, 0.18);
+  color: #7ee0e6;
+  white-space: pre-wrap;
+}
+
+/* code blocks (Shiki emits <pre class="astro-code" data-language>) */
+.prose pre {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 1rem 1.1rem;
+  padding-top: 2.6rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-strong);
+  background: var(--code-bg) !important;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  line-height: 1.65;
+  overflow-x: auto;
+  tab-size: 4;
+}
+.prose pre code {
+  font-family: inherit;
+  display: block;
+  min-width: 100%;
+  width: max-content;
+}
+/* fake title bar */
+.prose pre::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2.1rem;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+/* mac dots for terminal-ish languages */
+.prose pre[data-language='console']::after,
+.prose pre[data-language='terminal']::after,
+.prose pre[data-language='shell-session']::after,
+.prose pre[data-language='sh']::after,
+.prose pre[data-language='bash']::after,
+.prose pre[data-language='shell']::after,
+.prose pre[data-language='zsh']::after,
+.prose pre[data-language='plaintext']::after {
+  content: '';
+  position: absolute;
+  top: calc((2.1rem - 11px) / 2);
+  left: 1rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ff5f56;
+  box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f;
+}
+/* language label + copy button injected by script */
+.prose .code-lang {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  height: 2.1rem;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  pointer-events: none;
+}
+.prose pre[data-language='console'] .code-lang,
+.prose pre[data-language='terminal'] .code-lang,
+.prose pre[data-language='shell-session'] .code-lang,
+.prose pre[data-language='sh'] .code-lang,
+.prose pre[data-language='bash'] .code-lang,
+.prose pre[data-language='shell'] .code-lang,
+.prose pre[data-language='zsh'] .code-lang,
+.prose pre[data-language='plaintext'] .code-lang {
+  left: 4.4rem;
+}
+.prose .code-copy {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.6rem;
+  height: 1.4rem;
+  padding: 0 0.55rem;
+  border-radius: 5px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.prose .code-copy:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.prose .code-copy.copied {
+  color: var(--accent-2);
+  border-color: var(--accent-2);
+}
+
+/* tables */
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+.prose th,
+.prose td {
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.prose th {
+  background: var(--surface-2);
+  color: var(--text-strong);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+.prose tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* notices (kept from the Jekyll posts) */
+.prose .notice,
+.prose .notice--info,
+.prose .notice--warning,
+.prose .notice--danger,
+.prose .notice--success {
+  margin: 1.5rem 0;
+  padding: 0.9rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+  border-left-width: 4px;
+  background: var(--surface);
+  font-size: 0.95rem;
+}
+.prose .notice--info {
+  border-left-color: var(--accent);
+}
+.prose .notice--warning {
+  border-left-color: var(--warn);
+}
+.prose .notice--danger {
+  border-left-color: var(--danger);
+}
+.prose .notice--success {
+  border-left-color: var(--accent-2);
+}
+.prose .notice p:last-child {
+  margin: 0;
+}
+.prose kbd {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  padding: 0.1em 0.45em;
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  background: var(--surface-2);
+}
+
+/* lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(5, 8, 12, 0.92);
+  backdrop-filter: blur(6px);
+  cursor: zoom-out;
+}
+.lightbox.open {
+  display: flex;
+}
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}

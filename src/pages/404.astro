@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="404" description="Page not found" noindex>
+  <div class="container nf">
+    <p class="glitch mono" data-text="404">404</p>
+    <p class="mono line"><span class="p">rahul@rahulr.in</span>:~$ cat {Astro.url.pathname}<br /><span class="err">cat: no such file or directory</span></p>
+    <div class="actions">
+      <a class="btn btn--primary" href="/">cd ~</a>
+      <a class="btn" href="/search/">grep -ri</a>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .nf {
+    text-align: center;
+    padding-block: 4rem;
+  }
+  .glitch {
+    font-size: clamp(5rem, 18vw, 10rem);
+    font-weight: 700;
+    color: var(--text-strong);
+    letter-spacing: -0.06em;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    animation: glitch 1s linear infinite;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+  }
+  .glitch::before {
+    color: var(--accent);
+    left: 3px;
+    animation: glitchTop 1.5s linear infinite;
+  }
+  .glitch::after {
+    color: var(--danger);
+    left: -3px;
+    animation: glitchBottom 2s linear infinite;
+  }
+  @keyframes glitch {
+    2%, 64% { transform: translate(2px, 0) skew(0deg); }
+    4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+    62% { transform: translate(0, 0) skew(5deg); }
+  }
+  @keyframes glitchTop {
+    2%, 64% { clip-path: inset(0 0 60% 0); transform: translate(2px, -2px); }
+    4%, 60% { clip-path: inset(0 0 60% 0); transform: translate(-2px, 2px); }
+    62% { clip-path: inset(0 0 60% 0); transform: translate(13px, -1px) skew(-13deg); }
+  }
+  @keyframes glitchBottom {
+    2%, 64% { clip-path: inset(65% 0 0 0); transform: translate(-2px, 0); }
+    4%, 60% { clip-path: inset(65% 0 0 0); transform: translate(-2px, 0); }
+    62% { clip-path: inset(65% 0 0 0); transform: translate(-22px, 5px) skew(21deg); }
+  }
+  .line {
+    color: var(--muted);
+    margin: 1rem 0 2rem;
+  }
+  .line .p { color: var(--accent-2); }
+  .line .err { color: var(--danger); }
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+</style>

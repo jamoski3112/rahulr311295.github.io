@@ -1,0 +1,67 @@
+---
+import { SITE, SOCIAL } from '../consts';
+import Icon from './Icon.astro';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container inner">
+    <div class="left">
+      <span class="mono prompt">$ echo</span>
+      <span>&copy; {year} {SITE.author}. Built with <a href="https://astro.build" rel="noopener">Astro</a>.</span>
+    </div>
+    <ul class="social">
+      {SOCIAL.map((s) => (
+        <li>
+          <a href={s.href} target={s.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" aria-label={s.name} title={s.name}>
+            <Icon name={s.icon} size={18} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    background: rgba(10, 13, 18, 0.6);
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1.25rem;
+  }
+  .left {
+    display: flex;
+    gap: 0.6em;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .prompt {
+    color: var(--accent-2);
+  }
+  .social {
+    list-style: none;
+    display: flex;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+  }
+  .social a {
+    display: inline-flex;
+    padding: 0.45rem;
+    border-radius: 6px;
+    color: var(--muted);
+    border: 1px solid transparent;
+  }
+  .social a:hover {
+    color: var(--accent);
+    border-color: var(--border-strong);
+    background: var(--surface);
+  }
+</style>

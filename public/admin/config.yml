@@ -1,0 +1,57 @@
+backend:
+  name: github
+  repo: jamoski3112/rahulr311295.github.io
+  branch: gh-pages
+  base_url: https://decap-cms-oauth-flax.vercel.app
+  auth_endpoint: api/auth
+
+# Local editing: run `npm run cms` next to `npm run dev`, then open http://localhost:4321/admin/
+local_backend: true
+
+publish_mode: simple
+media_folder: "public/assets/images/{{slug}}"
+public_folder: "/assets/images/{{slug}}"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "src/content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "description", label: "Excerpt", widget: "text" }
+      - { name: "date", label: "Date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { name: "teaser", label: "Teaser image", widget: "image", required: false }
+      - { name: "categories", label: "Categories", widget: "list", required: false, hint: "e.g. reverse engineering, capture the flag" }
+      - { name: "tags", label: "Tags", widget: "list", required: false }
+      - { name: "draft", label: "Draft", widget: "boolean", default: false, required: false }
+      - { name: "body", label: "Body", widget: "markdown" }
+
+  - name: "htb_writeups"
+    label: "HackTheBox Writeups"
+    description: "For already-RETIRED machines only. Active-machine drafts belong in the private htb-writeup-drafts repo, not here."
+    folder: "src/content/posts"
+    create: true
+    slug: "HackTheBox-{{slug}}"
+    filter: { field: "categories", value: "hackthebox" }
+    fields:
+      - { name: "title", label: "Title", widget: "string", hint: "e.g. HackTheBox - MachineName" }
+      - { name: "description", label: "Excerpt", widget: "text" }
+      - { name: "date", label: "Date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { name: "teaser", label: "Teaser image", widget: "image", required: false }
+      - { name: "categories", label: "Categories", widget: "hidden", default: ["hackthebox"] }
+      - { name: "tags", label: "Tags", widget: "list", default: ["hackthebox"] }
+      - name: "htb"
+        label: "Machine Info"
+        widget: "object"
+        fields:
+          - { name: "machine", label: "Machine Name", widget: "string" }
+          - { name: "os", label: "OS", widget: "select", options: ["Linux", "Windows", "FreeBSD", "OpenBSD", "Solaris", "Other"] }
+          - { name: "difficulty", label: "Difficulty", widget: "select", options: ["Easy", "Medium", "Hard", "Insane"] }
+          - { name: "points", label: "Points", widget: "number", value_type: "int", required: false }
+          - { name: "ip", label: "IP Address", widget: "string", required: false }
+          - { name: "retired", label: "Retired Date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: true }
+          - { name: "profile", label: "HTB Profile URL", widget: "string", required: false }
+          - { name: "icon", label: "Machine icon", widget: "image", required: false }
+      - { name: "body", label: "Body", widget: "markdown", hint: "The Machine Info box renders automatically above the body. Plain markdown - no Liquid raw guards needed any more." }

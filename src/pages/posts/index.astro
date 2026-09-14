@@ -1,0 +1,131 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { getPosts, groupByYear, postUrl, fmtDate, isoDate, readingTime, slugify } from '../../lib/posts';
+const posts = await getPosts();
+const years = groupByYear(posts);
+---
+<Base title="All posts" description="Every writeup on rahulr.in, newest first.">
+  <div class="container">
+    <header class="page-head">
+      <p class="eyebrow">archive</p>
+      <h1>All posts</h1>
+      <p>{posts.length} writeups across {years.length} years. Newest first.</p>
+    </header>
+
+    {years.map(([year, list]) => (
+      <section class="year">
+        <h2 class="year__label mono">{year}<span class="year__count">{list.length}</span></h2>
+        <ol class="list">
+          {list.map((p) => (
+            <li class="row">
+              <a class="row__thumb" href={postUrl(p)} tabindex="-1" aria-hidden="true">
+                {p.data.teaser ? <img src={p.data.teaser} alt="" loading="lazy" width="96" height="64" /> : <span class="mono">&gt;_</span>}
+              </a>
+              <div class="row__main">
+                <a class="row__title" href={postUrl(p)}>{p.data.title}</a>
+                <div class="row__meta mono">
+                  <time datetime={isoDate(p.data.date)}>{fmtDate(p.data.date)}</time>
+                  <span>·</span>
+                  <span>{readingTime(p.body)} min</span>
+                  {p.data.htb?.difficulty && <span class:list={['badge', `badge--${p.data.htb.difficulty.toLowerCase()}`]}>{p.data.htb.difficulty}</span>}
+                  {p.data.categories.slice(0, 2).map((c) => (
+                    <a class="row__cat" href={`/categories/${slugify(c)}/`}><Icon name="folder" size={11} />{c}</a>
+                  ))}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .year {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .year__label {
+    color: var(--accent);
+    font-size: 1.4rem;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .year__count {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--border);
+  }
+  .row {
+    display: flex;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .row__thumb {
+    flex: 0 0 96px;
+    width: 96px;
+    height: 64px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+  }
+  .row__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .row__main {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .row__title {
+    color: var(--text-strong);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+  .row__title:hover {
+    color: var(--accent);
+  }
+  .row__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+  .row__cat {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    color: var(--muted);
+  }
+  .row__cat:hover {
+    color: var(--accent);
+  }
+  @media (max-width: 640px) {
+    .year {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+</style>

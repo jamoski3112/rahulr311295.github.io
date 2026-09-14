@@ -1,0 +1,6 @@
+---
+import TaxonomyList from '../../layouts/TaxonomyList.astro';
+import { getPosts, getTags } from '../../lib/posts';
+const items = getTags(await getPosts());
+---
+<TaxonomyList kind="tags" items={items} />

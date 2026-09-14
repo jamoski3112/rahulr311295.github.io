@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import PostCard from '../components/PostCard.astro';
+import Icon from '../components/Icon.astro';
+import { getPosts, getCategories, getTags } from '../lib/posts';
+import { SITE } from '../consts';
+
+const posts = await getPosts();
+const categories = getCategories(posts);
+const tags = getTags(posts);
+const stats = { posts: posts.length, categories: categories.length, tags: tags.length, htb: posts.filter((p) => p.data.htb).length };
+const [featured, ...rest] = posts;
+const latest = SITE.postsPerHome > 0 ? rest.slice(0, SITE.postsPerHome - 1) : rest;
+---
+<Base>
+  <div class="container">
+    <Hero stats={stats} />
+
+    <section>
+      <div class="section-title">
+        <h2><span class="prompt">$</span>writeups</h2>
+        <a class="more" href="/posts/">{posts.length} posts · archive by year →</a>
+      </div>
+      <div class="grid">
+        <PostCard post={featured} featured />
+        {latest.map((p) => <PostCard post={p} />)}
+      </div>
+    </section>
+
+    <section class="cats">
+      <div class="section-title">
+        <h2><span class="prompt">$</span>browse by category</h2>
+        <a class="more" href="/tags/">all tags →</a>
+      </div>
+      <ul class="catlist">
+        {categories.map((c) => (
+          <li>
+            <a class="pill" href={`/categories/${c.slug}/`}><Icon name="folder" size={12} />{c.name} <span class="count">{c.posts.length}</span></a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .cats {
+    margin-top: 3rem;
+  }
+  .catlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .catlist .pill {
+    font-size: 0.85rem;
+    padding: 0.35em 0.9em;
+  }
+</style>

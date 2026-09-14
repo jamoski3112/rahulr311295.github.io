@@ -1,0 +1,282 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { about } from '../data/about';
+---
+<Base title="About" description={`${about.name} — ${about.headline}. ${about.summary[0]}`}>
+  <div class="container about">
+    <header class="me">
+      <img class="me__avatar" src={about.avatar} alt={about.name} width="120" height="120" />
+      <div>
+        <p class="eyebrow">about</p>
+        <h1>{about.name}</h1>
+        <p class="me__headline">{about.headline}</p>
+        <ul class="me__certs">
+          {about.certs.map((c) => <li class="pill">{c}</li>)}
+        </ul>
+        <p class="me__loc"><Icon name="pin" size={14} />{about.location}</p>
+        <ul class="me__links">
+          <li><a href={about.linkedin} target="_blank" rel="noopener noreferrer"><Icon name="linkedin" size={15} />LinkedIn</a></li>
+          <li><a href={about.github} target="_blank" rel="noopener noreferrer"><Icon name="github" size={15} />GitHub</a></li>
+          <li><a href={about.twitter} target="_blank" rel="noopener noreferrer"><Icon name="x" size={15} />X</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="cols">
+      <div class="main">
+        <section>
+          <h2 class="h"><span class="prompt">$</span>cat about.txt</h2>
+          {about.summary.map((p) => <p class="para">{p}</p>)}
+        </section>
+
+        <section>
+          <h2 class="h"><span class="prompt">$</span>history</h2>
+          <ol class="timeline">
+            {about.experience.map((e) => (
+              <li>
+                <div class="tl__period mono">{e.period}</div>
+                <div class="tl__body">
+                  <strong>{e.role}</strong> <span class="tl__co">@ {e.company}</span>
+                  <div class="tl__loc mono">{e.location}</div>
+                  {e.notes && <p>{e.notes}</p>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section>
+          <h2 class="h"><span class="prompt">$</span>ls labs/</h2>
+          <ul class="labs">
+            {about.labs.map((l) => (
+              <li>
+                <span class="labs__name">{l.name}</span>
+                <span class="labs__meta mono">{l.issuer} · {l.date}</span>
+                {l.tag && <span class="pill">{l.tag}</span>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+
+      <aside class="side">
+        <section class="box">
+          <h2 class="h h--sm">focus</h2>
+          <ul class="list">
+            {about.focus.map((f) => <li>{f}</li>)}
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .me {
+    display: flex;
+    gap: 1.75rem;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .me__avatar {
+    width: 120px;
+    height: 120px;
+    flex: 0 0 120px;
+    border-radius: 16px;
+    border: 1px solid var(--border-strong);
+    object-fit: cover;
+    box-shadow: 0 0 0 4px var(--accent-dim);
+  }
+  .me h1 {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    margin: 0.2rem 0 0.2rem;
+  }
+  .me__headline {
+    margin: 0 0 0.7rem;
+    color: var(--text);
+    font-size: 1.05rem;
+  }
+  .me__certs {
+    list-style: none;
+    margin: 0 0 0.7rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .me__certs .pill {
+    color: var(--accent);
+    border-color: rgba(22, 200, 209, 0.4);
+  }
+  .me__loc {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    margin: 0 0 0.6rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .me__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+  }
+  .me__links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    color: var(--muted);
+  }
+  .me__links a:hover {
+    color: var(--accent);
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 2.5rem;
+  }
+  .main section {
+    margin-bottom: 2.5rem;
+  }
+  .h {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .h .prompt {
+    color: var(--accent-2);
+    font-family: var(--font-mono);
+    margin-right: 0.4em;
+  }
+  .h--sm {
+    font-size: 0.78rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    border: 0;
+    padding: 0;
+    margin-bottom: 0.6rem;
+  }
+  .h--sm::before {
+    content: '// ';
+    color: var(--muted);
+  }
+  .para {
+    margin: 0 0 1rem;
+    max-width: 68ch;
+  }
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-left: 2px solid var(--border);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .timeline li::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 1.35rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .tl__period {
+    font-size: 0.76rem;
+    color: var(--muted);
+    padding-top: 0.2rem;
+  }
+  .tl__body strong {
+    color: var(--text-strong);
+  }
+  .tl__co {
+    color: var(--accent);
+  }
+  .tl__loc {
+    font-size: 0.74rem;
+    color: var(--muted);
+    margin: 0.15rem 0 0.3rem;
+  }
+  .tl__body p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+  .labs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.4rem;
+  }
+  .labs li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.8rem;
+    padding: 0.6rem 0.9rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .labs__name {
+    color: var(--text-strong);
+    font-weight: 600;
+  }
+  .labs__meta {
+    font-size: 0.74rem;
+    color: var(--muted);
+    margin-right: auto;
+  }
+  .box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.2rem;
+    margin-bottom: 1.25rem;
+  }
+  .list {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.92rem;
+  }
+  .list li {
+    margin-bottom: 0.4rem;
+  }
+  .list li::marker {
+    color: var(--accent);
+  }
+  @media (max-width: 900px) {
+    .cols {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .me {
+      flex-direction: column;
+    }
+    .timeline li {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+  }
+</style>

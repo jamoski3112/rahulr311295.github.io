@@ -1,0 +1,20 @@
+---
+import Base from './Base.astro';
+import PostCard from '../components/PostCard.astro';
+import type { Taxonomy } from '../lib/posts';
+interface Props { kind: 'categories' | 'tags'; item: Taxonomy }
+const { kind, item } = Astro.props;
+const label = kind === 'categories' ? 'Category' : 'Tag';
+---
+<Base title={`${item.name} — ${label}`} description={`Posts in the ${item.name} ${label.toLowerCase()} on rahulr.in.`}>
+  <div class="container">
+    <header class="page-head">
+      <p class="eyebrow"><a href={`/${kind}/`}>{kind}</a> / {item.slug}</p>
+      <h1>{item.name}</h1>
+      <p>{item.posts.length} {item.posts.length === 1 ? 'post' : 'posts'}</p>
+    </header>
+    <div class="grid">
+      {item.posts.map((p) => <PostCard post={p} />)}
+    </div>
+  </div>
+</Base>

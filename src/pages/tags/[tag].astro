@@ -1,0 +1,9 @@
+---
+import TaxonomyPage from '../../layouts/TaxonomyPage.astro';
+import { getPosts, getTags } from '../../lib/posts';
+export async function getStaticPaths() {
+  return getTags(await getPosts()).map((item) => ({ params: { tag: item.slug }, props: { item } }));
+}
+const { item } = Astro.props;
+---
+<TaxonomyPage kind="tags" item={item} />

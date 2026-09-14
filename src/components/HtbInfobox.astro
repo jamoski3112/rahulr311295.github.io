@@ -1,0 +1,103 @@
+---
+import Icon from './Icon.astro';
+import { fmtDate } from '../lib/posts';
+type Htb = NonNullable<import('../lib/posts').Post['data']['htb']>;
+interface Props { htb: Htb }
+const { htb } = Astro.props;
+const os = (htb.os ?? '').toLowerCase();
+const known = ['linux', 'windows', 'freebsd', 'openbsd', 'solaris'];
+const osIcon = known.find((k) => os.includes(k));
+---
+<aside class="htb" aria-label="HackTheBox machine info">
+  <div class="htb__icon">
+    <img src={htb.icon ?? '/assets/images/hackthebox.webp'} alt={`${htb.machine} icon`} width="64" height="64" loading="lazy" />
+  </div>
+  <div class="htb__body">
+    <div class="htb__head">
+      {osIcon && <img class="htb__os" src={`/assets/images/icons/os-${osIcon}.webp`} alt={htb.os} title={htb.os} width="22" height="22" />}
+      <strong class="htb__name">{htb.machine}</strong>
+      {htb.difficulty && <span class:list={['badge', `badge--${htb.difficulty.toLowerCase()}`]}>{htb.difficulty}</span>}
+      <span class="htb__brand">HackTheBox</span>
+    </div>
+    <ul class="htb__meta">
+      {htb.os && <li><Icon name="desktop" size={14} />{htb.os}</li>}
+      {htb.points && <li><Icon name="star" size={14} />{htb.points} points</li>}
+      {htb.ip && <li><Icon name="network" size={14} /><span class="mono">{htb.ip}</span></li>}
+      {htb.retired && <li><Icon name="calendar" size={14} />Retired {fmtDate(htb.retired)}</li>}
+      {htb.profile && <li><Icon name="link" size={14} /><a href={htb.profile} target="_blank" rel="noopener noreferrer">Machine profile</a></li>}
+    </ul>
+  </div>
+</aside>
+
+<style>
+  .htb {
+    display: flex;
+    gap: 1.1rem;
+    align-items: flex-start;
+    margin: 0 0 2rem;
+    padding: 1.1rem 1.25rem;
+    background: linear-gradient(135deg, rgba(159, 239, 0, 0.06), transparent 50%), var(--surface);
+    border: 1px solid var(--border-strong);
+    border-left: 3px solid #9fef00;
+    border-radius: var(--radius);
+  }
+  .htb__icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--border-strong);
+    background: var(--bg-elev);
+    display: block;
+  }
+  .htb__body {
+    flex: 1;
+    min-width: 0;
+  }
+  .htb__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .htb__os {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+  }
+  .htb__name {
+    color: var(--text-strong);
+    font-size: 1.15rem;
+  }
+  .htb__brand {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: #9fef00;
+    letter-spacing: 0.06em;
+  }
+  .htb__meta {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1.25rem;
+    font-size: 0.86rem;
+    color: var(--muted);
+  }
+  .htb__meta li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+  .htb__meta svg {
+    color: var(--accent);
+  }
+  @media (max-width: 560px) {
+    .htb {
+      flex-direction: column;
+    }
+  }
+</style>

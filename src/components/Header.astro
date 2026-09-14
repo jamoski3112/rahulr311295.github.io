@@ -1,0 +1,138 @@
+---
+import { NAV, SITE } from '../consts';
+import Icon from './Icon.astro';
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href="/" aria-label={`${SITE.title} — home`}>
+      <span class="brand__prompt">~</span><span class="brand__name">{SITE.title.toLowerCase().replace(' ', '')}</span><span class="brand__cursor" aria-hidden="true">_</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+      <Icon name="menu" size={22} class="ico-open" />
+      <Icon name="close" size={22} class="ico-close" />
+    </button>
+    <nav id="site-nav" class="nav">
+      {NAV.map((item) => (
+        <a href={item.href} class:list={['nav__link', { active: isActive(item.href) }]} aria-current={isActive(item.href) ? 'page' : undefined}>
+          {item.title === 'Search' ? <Icon name="search" size={16} /> : null}
+          {item.title}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+    background: rgba(10, 13, 18, 0.8);
+    border-bottom: 1px solid var(--border);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 64px;
+  }
+  .brand {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text-strong);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+  }
+  .brand__prompt {
+    color: var(--accent-2);
+  }
+  .brand__cursor {
+    color: var(--accent);
+    animation: blink 1.1s steps(2, start) infinite;
+  }
+  @keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .nav__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 0.4em 0.8em;
+    border-radius: 6px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    transition: all 0.15s;
+  }
+  .nav__link:hover {
+    color: var(--text-strong);
+    background: var(--surface-2);
+  }
+  .nav__link.active {
+    color: var(--accent);
+    background: var(--accent-dim);
+  }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    color: var(--text);
+    padding: 0.35rem;
+    cursor: pointer;
+  }
+  .nav-toggle :global(.ico-close) {
+    display: none;
+  }
+  .nav-toggle[aria-expanded='true'] :global(.ico-open) {
+    display: none;
+  }
+  .nav-toggle[aria-expanded='true'] :global(.ico-close) {
+    display: block;
+  }
+  @media (max-width: 720px) {
+    .nav-toggle {
+      display: inline-flex;
+    }
+    .nav {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 64px;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0.75rem clamp(16px, 4vw, 32px) 1rem;
+      background: var(--bg-elev);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav.open {
+      display: flex;
+    }
+    .nav__link {
+      padding: 0.7em 0.8em;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('nav-toggle');
+  const nav = document.getElementById('site-nav');
+  btn?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(!!open));
+  });
+</script>
