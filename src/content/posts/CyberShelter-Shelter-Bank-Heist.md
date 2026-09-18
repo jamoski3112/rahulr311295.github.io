@@ -369,6 +369,8 @@ After the event, the organizers confirmed the ESC8 stage above wasn't the intend
 
 - `DC02.shelter-bank.com` is confirmed as the only real Enterprise CA (`certsrv` also answers on APP01, but that's "Shelter Legacy CA" - a decoy root the domain doesn't trust; PKINIT against a cert from it just fails).
 - Rather than freeing port 445 on a jump box, the intended pivot forwards **port 80** on JMP01 straight to DC02 with a `netsh interface portproxy` rule, then relays into `http://jmp01.corp.shelter-bank.com/certsrv/certfnsh.asp` with `certipy relay --template Machine` (certipy 5.x drops non-standard ports from the relay target URL, so it has to be 80 specifically - `ntlmrelayx --adcs` is the noted equivalent for any other port).
-- The coercion target is simpler too: since DC01 (child domain, inside the VPN-reachable `10.10.20.0/24` range) can reach the attacker's own VPN address directly, the intended solve coerces it straight to your own IP rather than routing the callback through a jump box. With PetitPotam.py pulled from GitHub and unauthenticated EFSRPC blocked on Server 2022, the tool of choice is NetExec's `coerce_plus` module, authenticated with `m.okafor`'s creds.
+- The coercion target is simpler too: since DC01 (child domain, inside the VPN-reachable `10.10.20.0/24` range) can reach the attacker's own VPN address directly, the intended solve coerces it straight to your own IP rather than routing the callback through a jump box.
 
-This is from a partial look at the organizers' own writeup (one stage of it, shared after the event) - everything above stays as the path I actually ran, not a reconstruction of theirs.
+## Thanks
+
+Thanks to [CyberShelter](https://www.cybershelter.com/) for running the event, and to the challenge creators: [Ajmal Aboobacker](https://www.linkedin.com/in/ajmalabubakkr/), [Abhiram Vijayan](https://www.linkedin.com/in/abhiramvabhi/), [Favas M](https://www.linkedin.com/in/favasm72/), [Vishnu K](https://www.linkedin.com/in/vishnuk-0xspear/), and [Ansan Binoy](https://www.linkedin.com/in/ansanbinoy/).
