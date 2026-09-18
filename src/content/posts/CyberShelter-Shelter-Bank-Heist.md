@@ -371,6 +371,4 @@ After the event, the organizers confirmed the ESC8 stage above wasn't the intend
 - Rather than freeing port 445 on a jump box, the intended pivot forwards **port 80** on JMP01 straight to DC02 with a `netsh interface portproxy` rule, then relays into `http://jmp01.corp.shelter-bank.com/certsrv/certfnsh.asp` with `certipy relay --template Machine` (certipy 5.x drops non-standard ports from the relay target URL, so it has to be 80 specifically - `ntlmrelayx --adcs` is the noted equivalent for any other port).
 - The coercion target is simpler too: since DC01 (child domain, inside the VPN-reachable `10.10.20.0/24` range) can reach the attacker's own VPN address directly, the intended solve coerces it straight to your own IP rather than routing the callback through a jump box.
 
-## Thanks
-
 Thanks to [CyberShelter](https://www.cybershelter.com/) for running the event, and to the challenge creators: [Ajmal Aboobacker](https://www.linkedin.com/in/ajmalabubakkr/), [Abhiram Vijayan](https://www.linkedin.com/in/abhiramvabhi/), [Favas M](https://www.linkedin.com/in/favasm72/), [Vishnu K](https://www.linkedin.com/in/vishnuk-0xspear/), and [Ansan Binoy](https://www.linkedin.com/in/ansanbinoy/).
