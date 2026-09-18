@@ -37,6 +37,8 @@ The landing page describes a 3-tier classification scheme: PUBLIC / RESTRICTED /
 const client_id = "6ldqvp9ntq6e844bsbfr0qgoe1"
 ```
 
+![Inline script on /login exposing the Cognito client_id](/assets/images/dubai-cyber-challenge-2026-cold-storage/00-login-js-client-id.png)
+
 That's a textbook **AWS Cognito App Client ID** format.
 
 ![Portal login page](/assets/images/dubai-cyber-challenge-2026-cold-storage/02-login-page.jpg)
