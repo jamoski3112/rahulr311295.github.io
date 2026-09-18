@@ -1,6 +1,6 @@
 ---
-title: CyberShelter - Shelter Bank Heist (GISEC 2026 Live-Fire Event)
-description: Writeup for the Shelter Bank Heist live-fire event at GISEC 2026 - LDAP injection in a bank's support lookup leaks a domain user, a BloodHound gMSA edge turns that into jump-server admin, a ligolo-ng pivot opens the firewalled parent domain, and an ESC8 NTLM relay through a hijacked SMB port into AD CS web enrollment ends with a SIDHistory golden ticket, a parent-domain DCSync, and a settled $10M transfer.
+title: CyberShelter - Shelter Bank Heist (GISEC 2026)
+description: Writeup for the Shelter Bank Heist event at GISEC 2026 - LDAP injection in a bank's support lookup leaks a domain user, a BloodHound gMSA edge turns that into jump-server admin, a ligolo-ng pivot opens the firewalled parent domain, and an ESC8 NTLM relay through a hijacked SMB port into AD CS web enrollment ends with a SIDHistory golden ticket, a parent-domain DCSync, and a settled $10M transfer.
 date: 2026-09-18
 slug: CyberShelter-Shelter-Bank-Heist
 teaser: /assets/images/shelter-bank-heist/event_landing.png
@@ -26,7 +26,7 @@ tags:
 ---
 ![Shelter Bank Heist](/assets/images/shelter-bank-heist/event_landing.png)
 
-**Event:** CyberShelter "Shelter Bank Heist" live-fire event at GISEC 2026
+**Event:** CyberShelter "Shelter Bank Heist" at GISEC 2026
 **Objective:** move up to **$10,000,000** out of Shelter Bank's vault and settle it to your registered account - first settled transfer takes the crown
 **Scope:** `shelter-bank.com` perimeter plus everything reachable from an issued remote-access profile
 **Result:** `{"status":"SETTLED","heist_id":"H-2026-23D5AE","amount":10000000}` - leaderboard rank 3
