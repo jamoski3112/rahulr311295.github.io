@@ -152,7 +152,7 @@ A host sweep of 10.10.20.0/24 plus DNS brute force against the internal resolver
 | core01 | 10.10.20.60 | payments gateway, only 8443 exposed |
 | WS01 | 10.10.20.70 | workstation, RDP/WinRM only |
 
-`m.okafor`'s creds authenticate everywhere but administer nothing, and LSASS on the jump boxes is empty - these are sterile images. BloodHound, though, finds the one edge that matters. RustHound-CE collection with the gMSA-readable account:
+`m.okafor`'s creds authenticate everywhere but administer nothing, and LSASS on the jump boxes is empty - these are sterile images. Running a RustHound-CE collection with `m.okafor`'s own creds surfaces the one edge that matters:
 
 ```console
 PAYMENTS-OPS@CORP.SHELTER-BANK.COM --ReadGMSAPassword--> SVC_JMPMAINT$@CORP.SHELTER-BANK.COM
