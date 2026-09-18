@@ -351,10 +351,6 @@ HTTP 200. The vault inventory: hedge funds, treasury sweeps, payroll concentrati
 
 ![Leaderboard - jamoski, rank 3, settled](/assets/images/shelter-bank-heist/leaderboard.png)
 
-## Leaderboard
-
-Third to settle: **#1 l3af, #2 z0ro, #3 jamoski**. The two ahead won on speed; we took the long way through the forest and enjoyed every relay failure.
-
 ## Kill chain recap
 
 1. **LDAP injection** in `online.shelter-bank.com`'s support lookup (`branch=*`) → creds for `m.okafor` (Payments-Ops)
@@ -366,15 +362,6 @@ Third to settle: **#1 l3af, #2 z0ro, #3 jamoski**. The two ahead won on speed; w
 7. **PKINIT** → DC01$ NT hash → **DCSync corp** → krbtgt + corpadmin
 8. **Golden ticket** with SIDHistory=Enterprise Admins over the unfiltered trust → **DCSync parent** → svc_swiftbridge
 9. Kerberos Negotiate auth to the Core Payments Gateway → `POST /api/v1/transfers` → **$10M SETTLED**
-
-## Lessons
-
-- Read the error codes. `ERR-2000` vs `ERR-1042` was the difference between "SQLi" and "LDAP injection" - and the whole event hinged on it.
-- BloodHound first, always. One gMSA edge replaced hours of blind hunting.
-- "Unreachable" is a routing problem, not a wall - a jump box plus ligolo dissolves segmentation.
-- certipy's "web enrollment: disabled" was a timeout wearing a costume. Verify reachability before trusting a negative.
-- Server 2022's NTLM hardening (MIC enforcement, SingleHost AV pairs) kills most relay muscle memory - but not all clients carry the restrictions, and AD CS web enrollment remains the softest target in the room.
-- Trusts without SID filtering are forest compromise. Child DA is Enterprise Admin; it just takes a golden ticket with the right extra SID.
 
 ## Postscript: this was the unintended route
 
