@@ -132,7 +132,7 @@ The remote access portal accepts `m.okafor` / `Payment$Ops2026!` - and here's th
 Note the "Employee resources" panel: **Core Payments Gateway** (`https://core01:8443`, "Finance department only"), plus Online Banking Admin and IT Helpdesk links that never resolve - decoys. `core01` is the money.
 
 ```console
-└─$ sudo openvpn --config shelter.ovpn
+└─$ sudo openvpn shelter.ovpn
 [...] Initialization Sequence Completed
 └─$ ip -4 addr show tun0 | grep inet
 inet 10.10.90.18/24 scope global tun0
